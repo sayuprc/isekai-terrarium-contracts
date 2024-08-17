@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package isekai_journey_api.journey_log;
+
+service JourneyLogService {
+  rpc ListJourneyLogs(ListJourneyLogsRequest) returns (ListJourneyLogsResponse);
+}
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+message JourneyLog {
+  string journey_log_id = 1;
+  string summary = 2;
+  string story = 3;
+  Date from_on = 4;
+  Date to_on = 5;
+}
+
+message ListJourneyLogsRequest {
+}
+
+message ListJourneyLogsResponse {
+  repeated JourneyLog journey_logs = 1;
+}
