@@ -1,6 +1,9 @@
 syntax = "proto3";
 
-package isekai_journey_api.journey_log;
+package isekaijourney.journeylog;
+
+option php_namespace = "Generated\\IsekaiJourney\\JourneyLog";
+option php_metadata_namespace = "Generated\\GPBMetadata";
 
 service JourneyLogService {
   rpc ListJourneyLogs(ListJourneyLogsRequest) returns (ListJourneyLogsResponse);
