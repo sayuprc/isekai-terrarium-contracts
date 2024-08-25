@@ -7,6 +7,8 @@ option php_metadata_namespace = "Generated\\GPBMetadata";
 
 service JourneyLogService {
   rpc ListJourneyLogs(ListJourneyLogsRequest) returns (ListJourneyLogsResponse);
+
+  rpc CreateJourneyLog(CreateJourneyLogRequest) returns (CreateJourneyLogResponse);
 }
 
 message Date {
@@ -28,4 +30,24 @@ message ListJourneyLogsRequest {
 
 message ListJourneyLogsResponse {
   repeated JourneyLog journey_logs = 1;
+}
+
+message CreateJourneyLogRequest {
+  string summary = 1;
+  string story = 2;
+  Date from_on = 3;
+  Date to_on = 4;
+}
+
+message CreateJourneyLogResponse {
+  Status status = 1;
+  // status が FAILED のときのみ存在する
+  optional string message = 2;
+  // status が SUCCESS のときのみ存在する
+  optional JourneyLog journey_log = 3;
+}
+
+enum Status {
+  SUCCESS = 0;
+  FAILED = 1;
 }
