@@ -23,6 +23,7 @@ message JourneyLog {
   string story = 3;
   Date from_on = 4;
   Date to_on = 5;
+  int32 order_no = 6;
 }
 
 message ListJourneyLogsRequest {
@@ -37,6 +38,7 @@ message CreateJourneyLogRequest {
   string story = 2;
   Date from_on = 3;
   Date to_on = 4;
+  int32 order_no = 5;
 }
 
 message CreateJourneyLogResponse {
