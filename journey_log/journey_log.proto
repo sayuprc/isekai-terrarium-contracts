@@ -11,6 +11,8 @@ service JourneyLogService {
   rpc CreateJourneyLog(CreateJourneyLogRequest) returns (CreateJourneyLogResponse);
 
   rpc EditJourneyLog(EditJourneyLogRequest) returns (EditJourneyLogResponse);
+
+  rpc GetJourneyLog(GetJourneyLogRequest) returns (GetJourneyLogResponse);
 }
 
 message Date {
@@ -61,6 +63,18 @@ message EditJourneyLogRequest {
 }
 
 message EditJourneyLogResponse {
+  Status status = 1;
+  // status が FAILED のときのみ存在する
+  optional string message = 2;
+  // status が SUCCESS のときのみ存在する
+  optional JourneyLog journey_log = 3;
+}
+
+message GetJourneyLogRequest {
+  string journey_log_id = 1;
+}
+
+message GetJourneyLogResponse {
   Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
