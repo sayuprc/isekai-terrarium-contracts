@@ -13,6 +13,8 @@ service JourneyLogService {
   rpc EditJourneyLog(EditJourneyLogRequest) returns (EditJourneyLogResponse);
 
   rpc GetJourneyLog(GetJourneyLogRequest) returns (GetJourneyLogResponse);
+
+  rpc DeleteJourneyLog(DeleteJourneyLogRequest) returns (DeleteJourneyLogResponse);
 }
 
 message Date {
@@ -84,6 +86,16 @@ message GetJourneyLogResponse {
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
   optional JourneyLog journey_log = 3;
+}
+
+message DeleteJourneyLogRequest {
+  string journey_log_id = 1;
+}
+
+message DeleteJourneyLogResponse {
+  Status status = 1;
+  // status が FAILED のときのみ存在する
+  optional string message = 2;
 }
 
 enum Status {
