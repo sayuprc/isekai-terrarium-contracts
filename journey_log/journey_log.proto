@@ -34,7 +34,11 @@ message ListJourneyLogsRequest {
 }
 
 message ListJourneyLogsResponse {
-  repeated JourneyLog journey_logs = 1;
+  Status status = 1;
+  // status が FAILED のときのみ存在する
+  optional string message = 2;
+  // status にかかわらず配列が返る
+  repeated JourneyLog journey_logs = 3;
 }
 
 message CreateJourneyLogRequest {
