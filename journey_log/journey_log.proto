@@ -25,11 +25,10 @@ message Date {
 
 message JourneyLog {
   string journey_log_id = 1;
-  string summary = 2;
-  string story = 3;
-  Date from_on = 4;
-  Date to_on = 5;
-  int32 order_no = 6;
+  string story = 2;
+  Date from_on = 3;
+  Date to_on = 4;
+  int32 order_no = 5;
 }
 
 message ListJourneyLogsRequest {
@@ -44,11 +43,10 @@ message ListJourneyLogsResponse {
 }
 
 message CreateJourneyLogRequest {
-  string summary = 1;
-  string story = 2;
-  Date from_on = 3;
-  Date to_on = 4;
-  int32 order_no = 5;
+  string story = 1;
+  Date from_on = 2;
+  Date to_on = 3;
+  int32 order_no = 4;
 }
 
 message CreateJourneyLogResponse {
@@ -61,11 +59,10 @@ message CreateJourneyLogResponse {
 
 message EditJourneyLogRequest {
   string journey_log_id = 1;
-  string summary = 2;
-  string story = 3;
-  Date from_on = 4;
-  Date to_on = 5;
-  int32 order_no = 6;
+  string story = 2;
+  Date from_on = 3;
+  Date to_on = 4;
+  int32 order_no = 5;
 }
 
 message EditJourneyLogResponse {
