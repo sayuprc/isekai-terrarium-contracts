@@ -23,12 +23,27 @@ message Date {
   uint32 day = 3;
 }
 
+message Link {
+  string link_id = 1;
+  string link_name = 2;
+  string url = 3;
+  int32 order_no = 4;
+  string link_type_id = 5;
+}
+
+message LinkType {
+  string link_type_id = 1;
+  string link_type_name = 2;
+  int32 order_no = 3;
+}
+
 message JourneyLog {
   string journey_log_id = 1;
   string story = 2;
   Date from_on = 3;
   Date to_on = 4;
   int32 order_no = 5;
+  repeated Link links = 6;
 }
 
 message ListJourneyLogsRequest {
@@ -47,6 +62,7 @@ message CreateJourneyLogRequest {
   Date from_on = 2;
   Date to_on = 3;
   int32 order_no = 4;
+  repeated Link links = 5;
 }
 
 message CreateJourneyLogResponse {
@@ -63,6 +79,7 @@ message EditJourneyLogRequest {
   Date from_on = 3;
   Date to_on = 4;
   int32 order_no = 5;
+  repeated Link links = 6;
 }
 
 message EditJourneyLogResponse {
