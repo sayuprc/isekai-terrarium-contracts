@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package isekai_journey.journey_log;
+
+option php_namespace = "Generated\\IsekaiJourney\\Shared";
+option php_metadata_namespace = "Generated\\GPBMetadata";
+
+message Date {
+  int32 year = 1;
+  uint32 month = 2;
+  uint32 day = 3;
+}
+
+enum Status {
+  SUCCESS = 0;
+  FAILED = 1;
+}

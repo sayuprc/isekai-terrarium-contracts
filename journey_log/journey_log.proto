@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package isekai_journey.journey_log;
 
+import "journey_log/shared.proto";
+
 option php_namespace = "Generated\\IsekaiJourney\\JourneyLog";
 option php_metadata_namespace = "Generated\\GPBMetadata";
 
@@ -17,24 +19,12 @@ service JourneyLogService {
   rpc DeleteJourneyLog(DeleteJourneyLogRequest) returns (DeleteJourneyLogResponse);
 }
 
-message Date {
-  int32 year = 1;
-  uint32 month = 2;
-  uint32 day = 3;
-}
-
 message JourneyLogLink {
   string journey_log_link_id = 1;
   string journey_log_link_name = 2;
   string url = 3;
   int32 order_no = 4;
   string journey_log_link_type_id = 5;
-}
-
-message JourneyLogLinkType {
-  string journey_log_link_type_id = 1;
-  string journey_log_link_type_name = 2;
-  int32 order_no = 3;
 }
 
 message JourneyLog {
@@ -110,9 +100,4 @@ message DeleteJourneyLogResponse {
   Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
-}
-
-enum Status {
-  SUCCESS = 0;
-  FAILED = 1;
 }
