@@ -15,8 +15,6 @@ service JourneyLogLinkTypeService {
   rpc EditJourneyLogLinkType(EditJourneyLogLinkTypeRequest) returns (EditJourneyLogLinkTypeResponse);
 
   rpc GetJourneyLogLinkType(GetJourneyLogLinkTypeRequest) returns (GetJourneyLogLinkTypeResponse);
-
-  rpc DeleteJourneyLogLinkType(DeleteJourneyLogLinkTypeRequest) returns (DeleteJourneyLogLinkTypeResponse);
 }
 
 message JourneyLogLinkType {
@@ -73,14 +71,4 @@ message GetJourneyLogLinkTypeResponse {
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
   optional JourneyLogLinkType journey_log_link_type = 3;
-}
-
-message DeleteJourneyLogLinkTypeRequest {
-  string journey_log_link_type_id = 1;
-}
-
-message DeleteJourneyLogLinkTypeResponse {
-  Status status = 1;
-  // status が FAILED のときのみ存在する
-  optional string message = 2;
 }
