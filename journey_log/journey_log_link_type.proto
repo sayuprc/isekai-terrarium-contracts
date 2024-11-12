@@ -62,7 +62,7 @@ message EditJourneyLogLinkTypeResponse {
 }
 
 message GetJourneyLogLinkTypeRequest {
-  string journey_log_id = 1;
+  string journey_log_link_type_id = 1;
 }
 
 message GetJourneyLogLinkTypeResponse {
