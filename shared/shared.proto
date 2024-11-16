@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package isekai_journey.journey_log;
+package isekai_journey.shared;
 
 option php_namespace = "Generated\\IsekaiJourney\\Shared";
 option php_metadata_namespace = "Generated\\GPBMetadata";
