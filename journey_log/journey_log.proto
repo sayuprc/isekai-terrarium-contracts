@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package isekai_journey.journey_log;
 
-import "journey_log/shared.proto";
+import "shared/shared.proto";
 
 option php_namespace = "Generated\\IsekaiJourney\\JourneyLog";
 option php_metadata_namespace = "Generated\\GPBMetadata";
@@ -30,8 +30,8 @@ message JourneyLogLink {
 message JourneyLog {
   string journey_log_id = 1;
   string story = 2;
-  Date from_on = 3;
-  Date to_on = 4;
+  shared.Date from_on = 3;
+  shared.Date to_on = 4;
   int32 order_no = 5;
   repeated JourneyLogLink journeyLogLinks = 6;
 }
@@ -40,7 +40,7 @@ message ListJourneyLogsRequest {
 }
 
 message ListJourneyLogsResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status にかかわらず配列が返る
@@ -49,14 +49,14 @@ message ListJourneyLogsResponse {
 
 message CreateJourneyLogRequest {
   string story = 1;
-  Date from_on = 2;
-  Date to_on = 3;
+  shared.Date from_on = 2;
+  shared.Date to_on = 3;
   int32 order_no = 4;
   repeated JourneyLogLink journeyLogLinks = 5;
 }
 
 message CreateJourneyLogResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -66,14 +66,14 @@ message CreateJourneyLogResponse {
 message EditJourneyLogRequest {
   string journey_log_id = 1;
   string story = 2;
-  Date from_on = 3;
-  Date to_on = 4;
+  shared.Date from_on = 3;
+  shared.Date to_on = 4;
   int32 order_no = 5;
   repeated JourneyLogLink journeyLogLinks = 6;
 }
 
 message EditJourneyLogResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -85,7 +85,7 @@ message GetJourneyLogRequest {
 }
 
 message GetJourneyLogResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -97,7 +97,7 @@ message DeleteJourneyLogRequest {
 }
 
 message DeleteJourneyLogResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
 }

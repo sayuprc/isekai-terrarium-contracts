@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package isekai_journey.journey_log;
+package isekai_journey.journey_log_link_type;
 
-import "journey_log/shared.proto";
+import "shared/shared.proto";
 
 option php_namespace = "Generated\\IsekaiJourney\\JourneyLogLinkType";
 option php_metadata_namespace = "Generated\\GPBMetadata";
@@ -29,7 +29,7 @@ message ListJourneyLogLinkTypesRequest {
 }
 
 message ListJourneyLogLinkTypesResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status にかかわらず配列が返る
@@ -42,7 +42,7 @@ message CreateJourneyLogLinkTypeRequest {
 }
 
 message CreateJourneyLogLinkTypeResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -56,7 +56,7 @@ message EditJourneyLogLinkTypeRequest {
 }
 
 message EditJourneyLogLinkTypeResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -68,7 +68,7 @@ message GetJourneyLogLinkTypeRequest {
 }
 
 message GetJourneyLogLinkTypeResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
   // status が SUCCESS のときのみ存在する
@@ -80,7 +80,7 @@ message DeleteJourneyLogLinkTypeRequest {
 }
 
 message DeleteJourneyLogLinkTypeResponse {
-  Status status = 1;
+  shared.Status status = 1;
   // status が FAILED のときのみ存在する
   optional string message = 2;
 }
