@@ -1,6 +1,6 @@
-# ヰ世界情緒のあゆみ Protocol Buffers
+# ヰ世界情緒の軌跡 Protocol Buffers
 
-ヰ世界情緒のあゆみで利用する proto ファイル群
+ヰ世界情緒の軌跡で利用する proto ファイル群
 
 ## 関連リポジトリ
 
