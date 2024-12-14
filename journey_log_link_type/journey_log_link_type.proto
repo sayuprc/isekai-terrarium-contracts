@@ -6,6 +6,7 @@ import "shared/shared.proto";
 
 option php_namespace = "Generated\\IsekaiJourney\\JourneyLogLinkType";
 option php_metadata_namespace = "Generated\\GPBMetadata";
+option go_package = "github.com/sayuprc/isekai-journey-api/pkg/grpc/journey_log_link_type";
 
 service JourneyLogLinkTypeService {
   rpc ListJourneyLogLinkTypes(ListJourneyLogLinkTypesRequest) returns (ListJourneyLogLinkTypesResponse);

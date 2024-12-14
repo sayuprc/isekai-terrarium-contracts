@@ -4,6 +4,7 @@ package isekai_journey.shared;
 
 option php_namespace = "Generated\\IsekaiJourney\\Shared";
 option php_metadata_namespace = "Generated\\GPBMetadata";
+option go_package = "github.com/sayuprc/isekai-journey-api/pkg/grpc/shared";
 
 message Date {
   int32 year = 1;
