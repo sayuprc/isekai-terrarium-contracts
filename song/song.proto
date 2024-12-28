@@ -6,7 +6,7 @@ import "shared/shared.proto";
 
 option php_namespace = "Generated\\IsekaiJourney\\Song";
 option php_metadata_namespace = "Generated\\GPBMetadata";
-option go_package = "github.com/sayuprc/isekai-journey-api/pkg/grpc/song";
+option go_package = "isekai-journey-api/pkg/grpc/song";
 
 service SongService {
   rpc ListSongs(ListSongsRequest) returns (ListSongsResponse);
