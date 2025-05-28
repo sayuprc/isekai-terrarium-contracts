@@ -1,0 +1,14 @@
+output-dir: "{cwd}/generated"
+emit:
+  - "@typespec/openapi3"
+  - "@typespec/http-client-js"
+  - "@typespec/protobuf"
+options:
+  "@typespec/openapi3":
+    emitter-output-dir: "{output-dir}/oas"
+    openapi-versions:
+      - 3.1.0
+  "@typespec/http-client-js":
+    emitter-output-dir: "{output-dir}/clients/js"
+  "@typespec/protobuf":
+    emitter-output-dir: "{output-dir}/protobuf"
