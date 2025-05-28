@@ -14,11 +14,11 @@ using Protobuf;
 namespace JourneyLog;
 
 model JourneyLogLink {
-  @field(1) journey_log_link_id: string;
-  @field(2) journey_log_link_name: string;
+  @field(1) journeyLogLinkId: string;
+  @field(2) journeyLogLinkName: string;
   @field(3) url: string;
-  @field(4) order_no: int32;
-  @field(5) journey_log_link_type_id: string;
+  @field(4) orderNo: int32;
+  @field(5) journeyLogLinkTypeId: string;
 }
 
 model JourneyLog {
@@ -39,15 +39,15 @@ model ListJourneyLogsResponse {
   @field(2) message?: string;
 
   // status にかかわらず配列が返る
-  @field(3) journey_logs: Array<JourneyLog>;
+  @field(3) journeyLogs: Array<JourneyLog>;
 }
 
 model CreateJourneyLogRequest {
   @field(1) story: string;
-  @field(2) from_on: Shared.Date;
-  @field(3) to_on: Shared.Date;
-  @field(4) order_no: int32;
-  @field(5) journey_log_links: Array<JourneyLogLink>;
+  @field(2) fromOn: Shared.Date;
+  @field(3) toOn: Shared.Date;
+  @field(4) orderNo: int32;
+  @field(5) journeyLogLinks: Array<JourneyLogLink>;
 }
 
 model CreateJourneyLogResponse {
@@ -57,16 +57,16 @@ model CreateJourneyLogResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log: JourneyLog;
+  @field(3) journeyLog?: JourneyLog;
 }
 
 model EditJourneyLogRequest {
-  @field(1) journey_log_id: string;
+  @field(1) journeyLogId: string;
   @field(2) story: string;
-  @field(3) from_on: Shared.Date;
-  @field(4) to_on: Shared.Date;
-  @field(5) order_no: int32;
-  @field(6) journey_log_links: Array<JourneyLogLink>;
+  @field(3) fromOn: Shared.Date;
+  @field(4) toOn: Shared.Date;
+  @field(5) orderNo: int32;
+  @field(6) journeyLogLinks: Array<JourneyLogLink>;
 }
 
 model EditJourneyLogResponse {
@@ -76,11 +76,11 @@ model EditJourneyLogResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log: JourneyLog;
+  @field(3) journeyLog?: JourneyLog;
 }
 
 model GetJourneyLogRequest {
-  @field(1) journey_log_id: string;
+  @field(1) journeyLogId: string;
 }
 
 model GetJourneyLogResponse {
@@ -90,11 +90,11 @@ model GetJourneyLogResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log: JourneyLog;
+  @field(3) journeyLog?: JourneyLog;
 }
 
 model DeleteJourneyLogRequest {
-  @field(1) journey_log_id: string;
+  @field(1) journeyLogId: string;
 }
 
 model DeleteJourneyLogResponse {
@@ -106,13 +106,13 @@ model DeleteJourneyLogResponse {
 
 @Protobuf.service
 interface JourneyLogService {
-  ListJourneyLogs(...ListJourneyLogsRequest): ListJourneyLogsResponse;
+  listJourneyLogs(...ListJourneyLogsRequest): ListJourneyLogsResponse;
 
-  CreateJourneyLog(...CreateJourneyLogRequest): CreateJourneyLogResponse;
+  createJourneyLog(...CreateJourneyLogRequest): CreateJourneyLogResponse;
 
-  EditJourneyLog(...EditJourneyLogRequest): EditJourneyLogResponse;
+  editJourneyLog(...EditJourneyLogRequest): EditJourneyLogResponse;
 
-  GetJourneyLog(...GetJourneyLogRequest): GetJourneyLogResponse;
+  getJourneyLog(...GetJourneyLogRequest): GetJourneyLogResponse;
 
-  DeleteJourneyLog(...DeleteJourneyLogRequest): DeleteJourneyLogResponse;
+  deleteJourneyLog(...DeleteJourneyLogRequest): DeleteJourneyLogResponse;
 }

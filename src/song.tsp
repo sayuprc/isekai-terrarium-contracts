@@ -14,20 +14,20 @@ using Protobuf;
 namespace Song;
 
 model SongLink {
-  @field(1) song_link_id: string;
-  @field(2) song_link_name: string;
+  @field(1) songLinkId: string;
+  @field(2) songLinkName: string;
   @field(3) url: string;
-  @field(4) order_no: int32;
+  @field(4) orderNo: int32;
 }
 
 model Song {
-  @field(1) song_id: string;
+  @field(1) songId: string;
   @field(2) title: string;
   @field(3) description: string;
-  @field(4) released_on: Shared.Date;
-  @field(5) song_type_id: string;
-  @field(6) order_no: int32;
-  @field(7) song_links: Array<SongLink>;
+  @field(4) releasedOn: Shared.Date;
+  @field(5) songTypeId: string;
+  @field(6) orderNo: int32;
+  @field(7) songLinks: Array<SongLink>;
 }
 
 model ListSongsRequest {}
@@ -45,10 +45,10 @@ model ListSongsResponse {
 model CreateSongRequest {
   @field(1) title: string;
   @field(2) description: string;
-  @field(3) released_on: Shared.Date;
-  @field(4) song_type_id: string;
-  @field(5) order_no: int32;
-  @field(6) song_links: Array<SongLink>;
+  @field(3) releasedOn: Shared.Date;
+  @field(4) songTypeId: string;
+  @field(5) orderNo: int32;
+  @field(6) songLinks: Array<SongLink>;
 }
 
 model CreateSongResponse {
@@ -58,12 +58,12 @@ model CreateSongResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) song: Song;
+  @field(3) song?: Song;
 }
 
 @Protobuf.service
 interface SongService {
-  ListSongs(...ListSongsRequest): ListSongsResponse;
+  listSongs(...ListSongsRequest): ListSongsResponse;
 
-  CreateSong(...CreateSongRequest): CreateSongResponse;
+  createSong(...CreateSongRequest): CreateSongResponse;
 }

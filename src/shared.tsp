@@ -19,6 +19,6 @@ model Date {
 }
 
 enum Status {
-  Success: 0,
-  Failed: 1,
+  success: 0,
+  failed: 1,
 }

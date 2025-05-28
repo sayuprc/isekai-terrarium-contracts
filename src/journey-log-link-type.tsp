@@ -14,9 +14,9 @@ using Protobuf;
 namespace JourneyLogLinkType;
 
 model JourneyLogLinkType {
-  @field(1) journey_log_link_type_id: string;
-  @field(2) journey_log_link_type_name: string;
-  @field(3) order_no: int32;
+  @field(1) journeyLogLinkTypeId: string;
+  @field(2) journeyLogLinkTypeName: string;
+  @field(3) orderNo: int32;
 }
 
 model ListJourneyLogLinkTypesRequest {}
@@ -28,12 +28,12 @@ model ListJourneyLogLinkTypesResponse {
   @field(2) message?: string;
 
   // status にかかわらず配列が返る
-  @field(3) journey_log_link_types: Array<JourneyLogLinkType>;
+  @field(3) journeyLogLinkTypes: Array<JourneyLogLinkType>;
 }
 
 model CreateJourneyLogLinkTypeRequest {
-  @field(1) journey_log_link_type_name: string;
-  @field(2) order_no: int32;
+  @field(1) journeyLogLinkTypeName: string;
+  @field(2) orderNo: int32;
 }
 
 model CreateJourneyLogLinkTypeResponse {
@@ -43,13 +43,13 @@ model CreateJourneyLogLinkTypeResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log_link_type?: JourneyLogLinkType;
+  @field(3) journeyLogLinkType?: JourneyLogLinkType;
 }
 
 model EditJourneyLogLinkTypeRequest {
-  @field(1) journey_log_link_type_id: string;
-  @field(2) journey_log_link_type_name: string;
-  @field(3) order_no: int32;
+  @field(1) journeyLogLinkTypeId: string;
+  @field(2) journeyLogLinkTypeName: string;
+  @field(3) orderNo: int32;
 }
 
 model EditJourneyLogLinkTypeResponse {
@@ -59,11 +59,11 @@ model EditJourneyLogLinkTypeResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log_link_type?: JourneyLogLinkType;
+  @field(3) journeyLogLinkType?: JourneyLogLinkType;
 }
 
 model GetJourneyLogLinkTypeRequest {
-  @field(1) journey_log_link_type_id: string;
+  @field(1) journeyLogLinkTypeId: string;
 }
 
 model GetJourneyLogLinkTypeResponse {
@@ -73,11 +73,11 @@ model GetJourneyLogLinkTypeResponse {
   @field(2) message?: string;
 
   // status が SUCCESS のときのみ存在する
-  @field(3) journey_log_link_type?: JourneyLogLinkType;
+  @field(3) journeyLogLinkType?: JourneyLogLinkType;
 }
 
 model DeleteJourneyLogLinkTypeRequest {
-  @field(1) journey_log_link_type_id: string;
+  @field(1) journeyLogLinkTypeId: string;
 }
 
 model DeleteJourneyLogLinkTypeResponse {
@@ -89,13 +89,13 @@ model DeleteJourneyLogLinkTypeResponse {
 
 @Protobuf.service
 interface JourneyLogLinkTypeService {
-  ListJourneyLogLinkTypes(...ListJourneyLogLinkTypesRequest): ListJourneyLogLinkTypesResponse;
+  listJourneyLogLinkTypes(...ListJourneyLogLinkTypesRequest): ListJourneyLogLinkTypesResponse;
 
-  CreateJourneyLogLinkType(...CreateJourneyLogLinkTypeRequest): CreateJourneyLogLinkTypeResponse;
+  createJourneyLogLinkType(...CreateJourneyLogLinkTypeRequest): CreateJourneyLogLinkTypeResponse;
 
-  EditJourneyLogLinkType(...EditJourneyLogLinkTypeRequest): EditJourneyLogLinkTypeResponse;
+  editJourneyLogLinkType(...EditJourneyLogLinkTypeRequest): EditJourneyLogLinkTypeResponse;
 
-  GetJourneyLogLinkType(...GetJourneyLogLinkTypeRequest): GetJourneyLogLinkTypeResponse;
+  getJourneyLogLinkType(...GetJourneyLogLinkTypeRequest): GetJourneyLogLinkTypeResponse;
 
-  DeleteJourneyLogLinkType(...DeleteJourneyLogLinkTypeRequest): DeleteJourneyLogLinkTypeResponse;
+  deleteJourneyLogLinkType(...DeleteJourneyLogLinkTypeRequest): DeleteJourneyLogLinkTypeResponse;
 }
