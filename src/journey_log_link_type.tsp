@@ -89,23 +89,13 @@ model DeleteJourneyLogLinkTypeResponse {
 
 @Protobuf.service
 interface JourneyLogLinkTypeService {
-  ListJourneyLogLinkTypes(
-    ...ListJourneyLogLinkTypesRequest,
-  ): ListJourneyLogLinkTypesResponse;
+  ListJourneyLogLinkTypes(...ListJourneyLogLinkTypesRequest): ListJourneyLogLinkTypesResponse;
 
-  CreateJourneyLogLinkType(
-    ...CreateJourneyLogLinkTypeRequest,
-  ): CreateJourneyLogLinkTypeResponse;
+  CreateJourneyLogLinkType(...CreateJourneyLogLinkTypeRequest): CreateJourneyLogLinkTypeResponse;
 
-  EditJourneyLogLinkType(
-    ...EditJourneyLogLinkTypeRequest,
-  ): EditJourneyLogLinkTypeResponse;
+  EditJourneyLogLinkType(...EditJourneyLogLinkTypeRequest): EditJourneyLogLinkTypeResponse;
 
-  GetJourneyLogLinkType(
-    ...GetJourneyLogLinkTypeRequest,
-  ): GetJourneyLogLinkTypeResponse;
+  GetJourneyLogLinkType(...GetJourneyLogLinkTypeRequest): GetJourneyLogLinkTypeResponse;
 
-  DeleteJourneyLogLinkType(
-    ...DeleteJourneyLogLinkTypeRequest,
-  ): DeleteJourneyLogLinkTypeResponse;
+  DeleteJourneyLogLinkType(...DeleteJourneyLogLinkTypeRequest): DeleteJourneyLogLinkTypeResponse;
 }
