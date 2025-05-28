@@ -1,4 +1,6 @@
 *
-!/protobuf
-!/oas
 !.gitignore
+!oas/
+!oas/**
+!protobuf/
+!protobuf/**
