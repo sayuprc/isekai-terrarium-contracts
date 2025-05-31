@@ -2,6 +2,8 @@ SHELL := /bin/bash
 
 .DEFAULT_GOAL := help
 
+CONTAINER := isekai-journey-proto
+
 .PHONY: build
 build: ## Build docker image for develop environment
 	docker build -t isekai-journey-proto:22 .
@@ -16,7 +18,7 @@ down: ## Delete the container
 
 .PHONY: node
 node: ## Enter node container
-	docker compose exec node bash
+	docker exec -it ${CONTAINER} bash
 
 .PHONY: npm-install
 npm-install: ## Install npm packages
@@ -24,24 +26,24 @@ npm-install: ## Install npm packages
 
 .PHONY: check-format
 check-format: ## Check code format
-	docker compose exec node npm run format:check
+	docker exec ${CONTAINER} npm run format:check
 
 .PHONY: fix-format
 fix-format: ## Run code formatting
-	docker compose exec node npm run format:fix
+	docker exec ${CONTAINER} npm run format:fix
 
 .PHONY: compile
 compile: ## Generate codes
-	docker compose exec node npm run compile
+	docker exec ${CONTAINER} npm run compile
 
 .PHONY: compile-watch
 compile-watch: ## Generate codes
-	docker compose exec node npm run compile:watch
+	docker exec ${CONTAINER} npm run compile:watch
 
 .PHONY: re-compile
 re-compile: ## Regenerate codes
 	rm -rf generated/oas generated/clients generated/protobuf
-	docker compose exec node npm run compile
+	docker exec ${CONTAINER} npm run compile
 
 .PHONY: help
 help: ## Display a list of targets
