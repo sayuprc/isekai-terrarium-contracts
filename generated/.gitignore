@@ -1,0 +1,6 @@
+*
+!.gitignore
+!oas/
+!oas/**
+!protobuf/
+!protobuf/**
