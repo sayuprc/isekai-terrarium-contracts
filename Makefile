@@ -2,11 +2,11 @@ SHELL := /bin/bash
 
 .DEFAULT_GOAL := help
 
-CONTAINER := isekai-journey-proto
+CONTAINER := isekai-terrarium-contracts
 
 .PHONY: build
 build: ## Build docker image for develop environment
-	docker build -t isekai-journey-proto:22 .
+	docker build -t isekai-terrarium-contracts:22 .
 
 .PHONY: up
 up: ## Start the container

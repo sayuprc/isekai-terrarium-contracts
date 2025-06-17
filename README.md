@@ -1,9 +1,9 @@
-# ヰ世界情緒の軌跡 Protocol Buffers
+# ヰ世界のテラリウム API Contracts
 
-ヰ世界情緒の軌跡で利用する proto ファイル群
+ヰ世界のテラリウムで利用する API 定義
 
 ## 関連リポジトリ
 
-- [API](https://github.com/sayuprc/isekai-journey-api)
-- [Admin Panel](https://github.com/sayuprc/isekai-journey-admin-panel)
-- [Frontend](https://github.com/sayuprc/isekai-journey)
+- [API](https://github.com/sayuprc/isekai-terrarium-api)
+- [Admin Panel](https://github.com/sayuprc/isekai-terrarium-admin-panel)
+- [Client](https://github.com/sayuprc/isekai-terrarium)
