@@ -1,5 +1,5 @@
 {
-  "name": "isekai-terrarium-proto",
+  "name": "isekai-terrarium-contracts",
   "version": "0.1.0",
   "type": "module",
   "peerDependencies": {
@@ -16,7 +16,6 @@
     "@typespec/http-client-js": "latest",
     "@typespec/openapi": "latest",
     "@typespec/openapi3": "latest",
-    "@typespec/protobuf": "^0.70.0",
     "@typespec/rest": "latest"
   },
   "scripts": {
