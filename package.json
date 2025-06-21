@@ -16,7 +16,6 @@
     "@typespec/http-client-js": "latest",
     "@typespec/openapi": "latest",
     "@typespec/openapi3": "latest",
-    "@typespec/protobuf": "^0.70.0",
     "@typespec/rest": "latest"
   },
   "scripts": {
