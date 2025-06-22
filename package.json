@@ -5,7 +5,6 @@
   "peerDependencies": {
     "@typespec/compiler": "latest",
     "@typespec/http": "latest",
-    "@typespec/http-client-js": "latest",
     "@typespec/openapi": "latest",
     "@typespec/openapi3": "latest",
     "@typespec/rest": "latest"
@@ -13,7 +12,6 @@
   "devDependencies": {
     "@typespec/compiler": "latest",
     "@typespec/http": "latest",
-    "@typespec/http-client-js": "latest",
     "@typespec/openapi": "latest",
     "@typespec/openapi3": "latest",
     "@typespec/rest": "latest"
