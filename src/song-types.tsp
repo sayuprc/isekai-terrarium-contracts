@@ -42,7 +42,7 @@ model GetSongTypeResponse {
 
 @doc("楽曲種別取得API")
 @tag("SongType")
-@route("/song-types")
+@route("/song-types/{songTypeId}")
 @get
 op getSongType(@path songTypeId: uuid): {
   @statusCode statusCode: 200;
