@@ -42,7 +42,7 @@ compile-watch: ## Generate codes
 
 .PHONY: re-compile
 re-compile: ## Regenerate codes
-	rm -rf generated/oas generated/clients generated/protobuf
+	rm -rf generated/oas
 	docker exec ${CONTAINER} npm run compile
 
 .PHONY: help
