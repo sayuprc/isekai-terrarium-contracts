@@ -35,3 +35,18 @@ op listSongTypes(): {
   @statusCode statusCode: 200;
   @body response: ListSongTypeResponse;
 };
+
+model GetSongTypeResponse {
+  songType: SongType;
+}
+
+@doc("楽曲種別取得API")
+@tag("SongType")
+@route("/song-types")
+@get
+op getSongType(@path songTypeId: uuid): {
+  @statusCode statusCode: 200;
+  @body response: GetSongTypeResponse;
+} | {
+  @statusCode statusCode: 404;
+};
