@@ -19,8 +19,36 @@ paths:
                 $ref: '#/components/schemas/ListSongTypeResponse'
       tags:
         - SongType
+  /song-types/{songTypeId}:
+    get:
+      operationId: getSongType
+      description: 楽曲種別取得API
+      parameters:
+        - name: songTypeId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSongTypeResponse'
+        '404':
+          description: The server cannot find the requested resource.
+      tags:
+        - SongType
 components:
   schemas:
+    GetSongTypeResponse:
+      type: object
+      required:
+        - songType
+      properties:
+        songType:
+          $ref: '#/components/schemas/SongType'
     ListSongTypeResponse:
       type: object
       required:
