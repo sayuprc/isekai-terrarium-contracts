@@ -19,6 +19,25 @@ paths:
                 $ref: '#/components/schemas/ListSongTypeResponse'
       tags:
         - SongType
+    post:
+      operationId: createSongType
+      description: 楽曲種別作成API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSongTypeResponse'
+      tags:
+        - SongType
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSongTypeRequest'
   /song-types/{songTypeId}:
     get:
       operationId: getSongType
@@ -42,6 +61,28 @@ paths:
         - SongType
 components:
   schemas:
+    CreateSongTypeRequest:
+      type: object
+      required:
+        - songTypeName
+        - orderNo
+      properties:
+        songTypeName:
+          type: string
+          minLength: 1
+          description: 楽曲種別名
+        orderNo:
+          type: integer
+          format: int32
+          minimum: 1
+          description: 表示順
+    CreateSongTypeResponse:
+      type: object
+      required:
+        - songType
+      properties:
+        songType:
+          $ref: '#/components/schemas/SongType'
     GetSongTypeResponse:
       type: object
       required:

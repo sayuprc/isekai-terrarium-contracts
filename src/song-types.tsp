@@ -50,3 +50,21 @@ op getSongType(@path songTypeId: uuid): {
 } | {
   @statusCode statusCode: 404;
 };
+
+model CreateSongTypeRequest {
+  songTypeName: SongType.songTypeName;
+  orderNo: SongType.orderNo;
+}
+
+model CreateSongTypeResponse {
+  songType: SongType;
+}
+
+@doc("楽曲種別作成API")
+@tag("SongType")
+@route("/song-types")
+@post
+op createSongType(@body request: CreateSongTypeRequest): {
+  @statusCode statusCode: 200;
+  @body response: CreateSongTypeResponse;
+};
