@@ -16,3 +16,12 @@ model CreateSongTypeRequest {
 model CreateSongTypeResponse {
   songType: SongType;
 }
+
+model UpdateSongTypeRequest {
+  songTypeName: SongType.songTypeName;
+  orderNo: SongType.orderNo;
+}
+
+model UpdateSongTypeResponse {
+  songType: SongType;
+}
