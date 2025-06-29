@@ -17,8 +17,8 @@
     "@typespec/rest": "latest"
   },
   "scripts": {
-    "compile": "tsp compile .",
-    "compile:watch": "tsp compile . --watch",
+    "compile": "tsp compile ./src",
+    "compile:watch": "tsp compile ./src --watch",
     "format:check": "tsp format --check \"**/*.tsp\"",
     "format:fix": "tsp format \"**/*.tsp\""
   },
