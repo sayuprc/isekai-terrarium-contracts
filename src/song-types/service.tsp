@@ -34,4 +34,9 @@ interface SongTypeService {
     | NotFound
     | Unprocessable
     | ServerError;
+
+  @doc("楽曲種別削除API")
+  @route("/{songTypeId}")
+  @delete
+  deleteSongType(@path songTypeId: uuid): Ok<{}> | BadRequest | NotFound | Unprocessable | ServerError;
 }
