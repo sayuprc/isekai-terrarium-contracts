@@ -147,6 +147,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateSongTypeRequest'
+    delete:
+      operationId: SongTypeService_deleteSongType
+      description: 楽曲種別削除API
+      parameters:
+        - name: songTypeId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Lib.uuid'
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - SongType
 components:
   schemas:
     CreateSongTypeRequest:

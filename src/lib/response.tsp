@@ -7,6 +7,10 @@ model Ok<T> {
   @body body: T;
 }
 
+model NoContent {
+  @statusCode statusCode: 204;
+}
+
 model BadRequest {
   @statusCode statusCode: 400;
   @body body: ErrorResponse;
