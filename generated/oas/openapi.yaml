@@ -7,7 +7,7 @@ tags:
 paths:
   /song-types:
     get:
-      operationId: listSongTypes
+      operationId: SongTypeService_listSongTypes
       description: 楽曲種別一覧取得API
       parameters: []
       responses:
@@ -16,11 +16,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSongTypeResponse'
+                $ref: '#/components/schemas/ListSongTypesResponse'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
       tags:
         - SongType
     post:
-      operationId: createSongType
+      operationId: SongTypeService_createSongType
       description: 楽曲種別作成API
       parameters: []
       responses:
@@ -30,6 +36,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSongTypeResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
       tags:
         - SongType
       requestBody:
@@ -40,14 +64,14 @@ paths:
               $ref: '#/components/schemas/CreateSongTypeRequest'
   /song-types/{songTypeId}:
     get:
-      operationId: getSongType
+      operationId: SongTypeService_getSongType
       description: 楽曲種別取得API
       parameters:
         - name: songTypeId
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: '#/components/schemas/Lib.uuid'
       responses:
         '200':
           description: The request has succeeded.
@@ -57,6 +81,22 @@ paths:
                 $ref: '#/components/schemas/GetSongTypeResponse'
         '404':
           description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
       tags:
         - SongType
 components:
@@ -83,6 +123,13 @@ components:
       properties:
         songType:
           $ref: '#/components/schemas/SongType'
+    ErrorResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
     GetSongTypeResponse:
       type: object
       required:
@@ -90,7 +137,10 @@ components:
       properties:
         songType:
           $ref: '#/components/schemas/SongType'
-    ListSongTypeResponse:
+    Lib.uuid:
+      type: string
+      format: uuid
+    ListSongTypesResponse:
       type: object
       required:
         - songTypes
@@ -108,7 +158,7 @@ components:
       properties:
         songTypeId:
           allOf:
-            - $ref: '#/components/schemas/uuid'
+            - $ref: '#/components/schemas/Lib.uuid'
           description: 楽曲種別ID
         songTypeName:
           type: string
@@ -123,9 +173,16 @@ components:
         - songTypeId: 5e8211d4-2952-407c-ba7b-18c3fe0da6e0
           songTypeName: オリジナル
           orderNo: 1
-    uuid:
-      type: string
-      format: uuid
+    ValidationError:
+      type: object
+      required:
+        - field
+        - message
+      properties:
+        field:
+          type: string
+        message:
+          type: string
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境
