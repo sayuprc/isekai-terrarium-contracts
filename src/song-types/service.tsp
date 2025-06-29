@@ -24,4 +24,14 @@ interface SongTypeService {
     | BadRequest
     | Unprocessable
     | ServerError;
+
+  @doc("楽曲種別更新API")
+  @route("/{songTypeId}")
+  @put
+  updateSongType(@path songTypeId: uuid, @body request: UpdateSongTypeRequest):
+    | Ok<UpdateSongTypeResponse>
+    | BadRequest
+    | NotFound
+    | Unprocessable
+    | ServerError;
 }
