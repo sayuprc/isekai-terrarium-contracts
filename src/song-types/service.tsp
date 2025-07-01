@@ -3,9 +3,7 @@ import "../lib";
 
 using Http;
 
-@service(#{ title: "ヰ世界のテラリウム API" })
-@server("https://local.admin.terrarium.isekaijoucho.fan/api", "ローカル環境")
-namespace SongTypes;
+namespace IsekaiTerrarium;
 
 @tag("SongType")
 @route("/song-types")

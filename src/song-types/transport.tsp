@@ -1,4 +1,4 @@
-namespace SongTypes;
+namespace IsekaiTerrarium;
 
 model ListSongTypesResponse {
   songTypes: SongType[];
