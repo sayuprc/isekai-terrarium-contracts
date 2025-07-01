@@ -16,7 +16,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSongTypesResponse'
+                $ref: '#/components/schemas/SongTypeListResponse'
         '500':
           description: Server error
         '503':
@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateSongTypeResponse'
+                $ref: '#/components/schemas/SongTypeCreateResponse'
         '400':
           description: The server could not understand the request due to invalid syntax.
           content:
@@ -61,7 +61,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSongTypeRequest'
+              $ref: '#/components/schemas/SongTypeCreateRequest'
   /song-types/{songTypeId}:
     get:
       operationId: SongTypeService_getSongType
@@ -71,14 +71,14 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSongTypeResponse'
+                $ref: '#/components/schemas/SongTypeGetResponse'
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -107,14 +107,14 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateSongTypeResponse'
+                $ref: '#/components/schemas/SongTypeUpdateResponse'
         '400':
           description: The server could not understand the request due to invalid syntax.
           content:
@@ -146,7 +146,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSongTypeRequest'
+              $ref: '#/components/schemas/SongTypeUpdateRequest'
     delete:
       operationId: SongTypeService_deleteSongType
       description: 楽曲種別削除API
@@ -155,7 +155,7 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -175,28 +175,6 @@ paths:
         - SongType
 components:
   schemas:
-    CreateSongTypeRequest:
-      type: object
-      required:
-        - songTypeName
-        - orderNo
-      properties:
-        songTypeName:
-          type: string
-          minLength: 1
-          description: 楽曲種別名
-        orderNo:
-          type: integer
-          format: int32
-          minimum: 1
-          description: 表示順
-    CreateSongTypeResponse:
-      type: object
-      required:
-        - songType
-      properties:
-        songType:
-          $ref: '#/components/schemas/SongType'
     ErrorResponse:
       type: object
       required:
@@ -204,25 +182,6 @@ components:
       properties:
         message:
           type: string
-    GetSongTypeResponse:
-      type: object
-      required:
-        - songType
-      properties:
-        songType:
-          $ref: '#/components/schemas/SongType'
-    Lib.uuid:
-      type: string
-      format: uuid
-    ListSongTypesResponse:
-      type: object
-      required:
-        - songTypes
-      properties:
-        songTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/SongType'
     SongType:
       type: object
       required:
@@ -232,7 +191,7 @@ components:
       properties:
         songTypeId:
           allOf:
-            - $ref: '#/components/schemas/Lib.uuid'
+            - $ref: '#/components/schemas/uuid'
           description: 楽曲種別ID
         songTypeName:
           type: string
@@ -247,7 +206,7 @@ components:
         - songTypeId: 5e8211d4-2952-407c-ba7b-18c3fe0da6e0
           songTypeName: オリジナル
           orderNo: 1
-    UpdateSongTypeRequest:
+    SongTypeCreateRequest:
       type: object
       required:
         - songTypeName
@@ -262,7 +221,45 @@ components:
           format: int32
           minimum: 1
           description: 表示順
-    UpdateSongTypeResponse:
+    SongTypeCreateResponse:
+      type: object
+      required:
+        - songType
+      properties:
+        songType:
+          $ref: '#/components/schemas/SongType'
+    SongTypeGetResponse:
+      type: object
+      required:
+        - songType
+      properties:
+        songType:
+          $ref: '#/components/schemas/SongType'
+    SongTypeListResponse:
+      type: object
+      required:
+        - songTypes
+      properties:
+        songTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SongType'
+    SongTypeUpdateRequest:
+      type: object
+      required:
+        - songTypeName
+        - orderNo
+      properties:
+        songTypeName:
+          type: string
+          minLength: 1
+          description: 楽曲種別名
+        orderNo:
+          type: integer
+          format: int32
+          minimum: 1
+          description: 表示順
+    SongTypeUpdateResponse:
       type: object
       required:
         - songType
@@ -279,6 +276,9 @@ components:
           type: string
         message:
           type: string
+    uuid:
+      type: string
+      format: uuid
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境

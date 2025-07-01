@@ -1,27 +1,27 @@
-namespace SongTypes;
+namespace IsekaiTerrarium;
 
-model ListSongTypesResponse {
+model SongTypeListResponse {
   songTypes: SongType[];
 }
 
-model GetSongTypeResponse {
+model SongTypeGetResponse {
   songType: SongType;
 }
 
-model CreateSongTypeRequest {
+model SongTypeCreateRequest {
   songTypeName: SongType.songTypeName;
   orderNo: SongType.orderNo;
 }
 
-model CreateSongTypeResponse {
+model SongTypeCreateResponse {
   songType: SongType;
 }
 
-model UpdateSongTypeRequest {
+model SongTypeUpdateRequest {
   songTypeName: SongType.songTypeName;
   orderNo: SongType.orderNo;
 }
 
-model UpdateSongTypeResponse {
+model SongTypeUpdateResponse {
   songType: SongType;
 }

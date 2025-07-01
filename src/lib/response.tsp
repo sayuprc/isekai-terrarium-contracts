@@ -3,12 +3,12 @@ import "@typespec/http";
 using Http;
 
 model Ok<T> {
-  @statusCode statusCode: 200;
+  @statusCode _: 200;
   @body body: T;
 }
 
 model NoContent {
-  @statusCode statusCode: 204;
+  @statusCode _: 204;
 }
 
 model BadRequest {
@@ -17,12 +17,12 @@ model BadRequest {
 }
 
 model NotFound {
-  @statusCode statusCode: 404;
+  @statusCode _: 404;
   @body body: ErrorResponse;
 }
 
 model Unprocessable {
-  @statusCode statusCode: 422;
+  @statusCode _: 422;
   @body body: ValidationError;
 }
 
@@ -32,15 +32,15 @@ model ValidationError {
 }
 
 model InternalServerError {
-  @statusCode statusCode: 500;
+  @statusCode _: 500;
 }
 
 model Unavailable {
-  @statusCode statusCode: 503;
+  @statusCode _: 503;
 }
 
 model GatewayTimeout {
-  @statusCode statusCode: 504;
+  @statusCode _: 504;
 }
 
 model ErrorResponse {
