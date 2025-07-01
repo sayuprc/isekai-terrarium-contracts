@@ -71,7 +71,7 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '200':
           description: The request has succeeded.
@@ -107,7 +107,7 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '200':
           description: The request has succeeded.
@@ -155,7 +155,7 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/Lib.uuid'
+            $ref: '#/components/schemas/uuid'
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
@@ -211,9 +211,6 @@ components:
       properties:
         songType:
           $ref: '#/components/schemas/SongType'
-    Lib.uuid:
-      type: string
-      format: uuid
     ListSongTypesResponse:
       type: object
       required:
@@ -232,7 +229,7 @@ components:
       properties:
         songTypeId:
           allOf:
-            - $ref: '#/components/schemas/Lib.uuid'
+            - $ref: '#/components/schemas/uuid'
           description: 楽曲種別ID
         songTypeName:
           type: string
@@ -279,6 +276,9 @@ components:
           type: string
         message:
           type: string
+    uuid:
+      type: string
+      format: uuid
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境

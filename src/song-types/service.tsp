@@ -2,7 +2,6 @@ import "@typespec/http";
 import "../lib";
 
 using Http;
-using Lib;
 
 @service(#{ title: "ヰ世界のテラリウム API" })
 @server("https://local.admin.terrarium.isekaijoucho.fan/api", "ローカル環境")
