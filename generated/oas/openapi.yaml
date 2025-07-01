@@ -3,8 +3,29 @@ info:
   title: ヰ世界のテラリウム API
   version: 0.0.0
 tags:
+  - name: Creator
   - name: SongType
 paths:
+  /creators:
+    get:
+      operationId: CreatorService_listCreators
+      description: クリエイター一覧取得API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatorListResponse'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Creator
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -175,6 +196,32 @@ paths:
         - SongType
 components:
   schemas:
+    Creator:
+      type: object
+      required:
+        - creatorId
+        - creatorName
+      properties:
+        creatorId:
+          allOf:
+            - $ref: '#/components/schemas/uuid'
+          description: クリエイターID
+        creatorName:
+          type: string
+          minLength: 1
+          description: クリエイター名
+      examples:
+        - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
+          creatorName: ヰ世界情緒
+    CreatorListResponse:
+      type: object
+      required:
+        - creators
+      properties:
+        creators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Creator'
     ErrorResponse:
       type: object
       required:
