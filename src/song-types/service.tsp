@@ -9,15 +9,15 @@ namespace IsekaiTerrarium;
 @route("/song-types")
 interface SongTypeService {
   @doc("楽曲種別一覧取得API")
-  listSongTypes(): Ok<ListSongTypesResponse> | ServerError;
+  listSongTypes(): Ok<SongTypeListResponse> | ServerError;
 
   @doc("楽曲種別取得API")
   @route("/{songTypeId}")
-  getSongType(@path songTypeId: uuid): Ok<GetSongTypeResponse> | NotFound | Unprocessable | ServerError;
+  getSongType(@path songTypeId: uuid): Ok<SongTypeGetResponse> | NotFound | Unprocessable | ServerError;
 
   @doc("楽曲種別作成API")
-  createSongType(@body request: CreateSongTypeRequest):
-    | Ok<CreateSongTypeResponse>
+  createSongType(@body request: SongTypeCreateRequest):
+    | Ok<SongTypeCreateResponse>
     | BadRequest
     | Unprocessable
     | ServerError;
@@ -25,8 +25,8 @@ interface SongTypeService {
   @doc("楽曲種別更新API")
   @route("/{songTypeId}")
   @put
-  updateSongType(@path songTypeId: uuid, @body request: UpdateSongTypeRequest):
-    | Ok<UpdateSongTypeResponse>
+  updateSongType(@path songTypeId: uuid, @body request: SongTypeUpdateRequest):
+    | Ok<SongTypeUpdateResponse>
     | BadRequest
     | NotFound
     | Unprocessable
