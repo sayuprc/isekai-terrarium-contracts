@@ -26,6 +26,43 @@ paths:
           description: Server error
       tags:
         - Creator
+  /creators/{creatorId}:
+    get:
+      operationId: CreatorService_getCreator
+      description: クリエイター取得API
+      parameters:
+        - name: creatorId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatorGetResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Creator
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -213,6 +250,13 @@ components:
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           creatorName: ヰ世界情緒
+    CreatorGetResponse:
+      type: object
+      required:
+        - creator
+      properties:
+        creator:
+          $ref: '#/components/schemas/Creator'
     CreatorListResponse:
       type: object
       required:
