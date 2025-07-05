@@ -24,7 +24,7 @@ interface SongTypeService {
 
   @doc("楽曲種別更新API")
   @route("/{songTypeId}")
-  @put
+  @patch(#{ implicitOptionality: false })
   updateSongType(@path songTypeId: uuid, @body request: SongTypeUpdateRequest):
     | Ok<SongTypeUpdateResponse>
     | BadRequest

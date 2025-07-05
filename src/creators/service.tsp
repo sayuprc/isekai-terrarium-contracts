@@ -24,7 +24,7 @@ interface CreatorService {
 
   @doc("クリエイター更新API")
   @route("/{creatorId}")
-  @put
+  @patch(#{ implicitOptionality: false })
   updateCreator(@path creatorId: uuid, @body request: CreatorUpdateRequest):
     | Ok<CreatorUpdateResponse>
     | BadRequest

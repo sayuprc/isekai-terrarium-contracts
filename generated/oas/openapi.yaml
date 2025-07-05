@@ -100,7 +100,7 @@ paths:
           description: Server error
       tags:
         - Creator
-    put:
+    patch:
       operationId: CreatorService_updateCreator
       description: クリエイター更新API
       parameters:
@@ -268,7 +268,7 @@ paths:
           description: Server error
       tags:
         - SongType
-    put:
+    patch:
       operationId: SongTypeService_updateSongType
       description: 楽曲種別更新API
       parameters:
