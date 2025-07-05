@@ -14,4 +14,11 @@ interface CreatorService {
   @doc("クリエイター取得API")
   @route("/{creatorId}")
   getCreator(@path creatorId: uuid): Ok<CreatorGetResponse> | NotFound | Unprocessable | ServerError;
+
+  @doc("クリエイター作成API")
+  createCreator(@body request: CreatorCreateRequest):
+    | Ok<CreatorCreateResponse>
+    | BadRequest
+    | Unprocessable
+    | ServerError;
 }

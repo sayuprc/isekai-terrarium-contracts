@@ -26,6 +26,43 @@ paths:
           description: Server error
       tags:
         - Creator
+    post:
+      operationId: CreatorService_createCreator
+      description: クリエイター作成API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatorCreateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Creator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatorCreateRequest'
   /creators/{creatorId}:
     get:
       operationId: CreatorService_getCreator
@@ -250,6 +287,22 @@ components:
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           creatorName: ヰ世界情緒
+    CreatorCreateRequest:
+      type: object
+      required:
+        - creatorName
+      properties:
+        creatorName:
+          type: string
+          minLength: 1
+          description: クリエイター名
+    CreatorCreateResponse:
+      type: object
+      required:
+        - creator
+      properties:
+        creator:
+          $ref: '#/components/schemas/Creator'
     CreatorGetResponse:
       type: object
       required:
