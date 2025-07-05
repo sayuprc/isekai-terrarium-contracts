@@ -31,4 +31,9 @@ interface CreatorService {
     | NotFound
     | Unprocessable
     | ServerError;
+
+  @doc("クリエイター削除API")
+  @route("/{creatorId}")
+  @delete
+  deleteCreator(@path creatorId: uuid): NoContent | Unprocessable | ServerError;
 }
