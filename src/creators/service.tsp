@@ -12,7 +12,6 @@ interface CreatorService {
   listCreators(): Ok<CreatorListResponse> | ServerError;
 
   @doc("クリエイター取得API")
-  @route("/{creatorId}")
   getCreator(@path creatorId: uuid): Ok<CreatorGetResponse> | NotFound | Unprocessable | ServerError;
 
   @doc("クリエイター作成API")
@@ -23,7 +22,6 @@ interface CreatorService {
     | ServerError;
 
   @doc("クリエイター更新API")
-  @route("/{creatorId}")
   @patch(#{ implicitOptionality: false })
   updateCreator(@path creatorId: uuid, @body request: CreatorUpdateRequest):
     | Ok<CreatorUpdateResponse>
@@ -33,7 +31,6 @@ interface CreatorService {
     | ServerError;
 
   @doc("クリエイター削除API")
-  @route("/{creatorId}")
   @delete
   deleteCreator(@path creatorId: uuid): NoContent | Unprocessable | ServerError;
 }
