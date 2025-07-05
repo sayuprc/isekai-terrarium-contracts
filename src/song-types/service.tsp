@@ -12,7 +12,6 @@ interface SongTypeService {
   listSongTypes(): Ok<SongTypeListResponse> | ServerError;
 
   @doc("楽曲種別取得API")
-  @route("/{songTypeId}")
   getSongType(@path songTypeId: uuid): Ok<SongTypeGetResponse> | NotFound | Unprocessable | ServerError;
 
   @doc("楽曲種別作成API")
@@ -23,7 +22,6 @@ interface SongTypeService {
     | ServerError;
 
   @doc("楽曲種別更新API")
-  @route("/{songTypeId}")
   @put
   updateSongType(@path songTypeId: uuid, @body request: SongTypeUpdateRequest):
     | Ok<SongTypeUpdateResponse>
@@ -33,7 +31,6 @@ interface SongTypeService {
     | ServerError;
 
   @doc("楽曲種別削除API")
-  @route("/{songTypeId}")
   @delete
   deleteSongType(@path songTypeId: uuid): NoContent | Unprocessable | ServerError;
 }
