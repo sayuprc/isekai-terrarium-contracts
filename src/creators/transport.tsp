@@ -15,3 +15,11 @@ model CreatorCreateRequest {
 model CreatorCreateResponse {
   creator: Creator;
 }
+
+model CreatorUpdateRequest {
+  creatorName: Creator.creatorName;
+}
+
+model CreatorUpdateResponse {
+  creator: Creator;
+}

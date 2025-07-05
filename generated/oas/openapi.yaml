@@ -100,6 +100,54 @@ paths:
           description: Server error
       tags:
         - Creator
+    put:
+      operationId: CreatorService_updateCreator
+      description: クリエイター更新API
+      parameters:
+        - name: creatorId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatorUpdateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Creator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatorUpdateRequest'
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -319,6 +367,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Creator'
+    CreatorUpdateRequest:
+      type: object
+      required:
+        - creatorName
+      properties:
+        creatorName:
+          type: string
+          minLength: 1
+          description: クリエイター名
+    CreatorUpdateResponse:
+      type: object
+      required:
+        - creator
+      properties:
+        creator:
+          $ref: '#/components/schemas/Creator'
     ErrorResponse:
       type: object
       required:
