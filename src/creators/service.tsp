@@ -21,4 +21,14 @@ interface CreatorService {
     | BadRequest
     | Unprocessable
     | ServerError;
+
+  @doc("クリエイター更新API")
+  @route("/{creatorId}")
+  @put
+  updateCreator(@path creatorId: uuid, @body request: CreatorUpdateRequest):
+    | Ok<CreatorUpdateResponse>
+    | BadRequest
+    | NotFound
+    | Unprocessable
+    | ServerError;
 }
