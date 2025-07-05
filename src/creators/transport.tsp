@@ -7,3 +7,11 @@ model CreatorListResponse {
 model CreatorGetResponse {
   creator: Creator;
 }
+
+model CreatorCreateRequest {
+  creatorName: Creator.creatorName;
+}
+
+model CreatorCreateResponse {
+  creator: Creator;
+}
