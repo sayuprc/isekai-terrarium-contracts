@@ -12,7 +12,7 @@ model NoContent {
 }
 
 model BadRequest {
-  @statusCode statusCode: 400;
+  @statusCode _: 400;
   @body body: ErrorResponse;
 }
 
