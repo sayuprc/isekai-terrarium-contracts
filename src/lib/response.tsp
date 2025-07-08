@@ -16,6 +16,10 @@ model BadRequest {
   @body body: ErrorResponse;
 }
 
+model Unauthorized {
+  @statusCode _: 401;
+}
+
 model NotFound {
   @statusCode _: 404;
   @body body: ErrorResponse;

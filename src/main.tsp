@@ -1,4 +1,5 @@
 import "@typespec/http";
+import "./auth";
 import "./creators";
 import "./song-types";
 
