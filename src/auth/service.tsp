@@ -10,5 +10,5 @@ namespace IsekaiTerrarium;
 interface AuthenticateService {
   @doc("認証API")
   @route("/login")
-  login(@body request: LoginRequest): Ok<LoginResponse> | BadRequest | Unauthorized | Unprocessable | ServerError;
+  login(@body request: LoginRequest): LoginResponse | BadRequest | Unauthorized | Unprocessable | ServerError;
 }

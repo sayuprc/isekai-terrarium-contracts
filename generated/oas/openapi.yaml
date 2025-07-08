@@ -15,10 +15,11 @@ paths:
       responses:
         '200':
           description: The request has succeeded.
-          content:
-            application/json:
+          headers:
+            Set-Cookie:
+              required: true
               schema:
-                $ref: '#/components/schemas/LoginResponse'
+                type: string
         '400':
           description: The server could not understand the request due to invalid syntax.
           content:
@@ -468,16 +469,6 @@ components:
         password:
           type: string
           format: password
-    LoginResponse:
-      type: object
-      required:
-        - accessToken
-        - refreshToken
-      properties:
-        accessToken:
-          type: string
-        refreshToken:
-          type: string
     SongType:
       type: object
       required:
