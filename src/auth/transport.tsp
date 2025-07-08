@@ -4,6 +4,8 @@ namespace IsekaiTerrarium;
 
 model LoginRequest {
   email: email;
+
+  @secret
   password: string;
 }
 

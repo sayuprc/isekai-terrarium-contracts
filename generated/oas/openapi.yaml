@@ -467,6 +467,7 @@ components:
           $ref: '#/components/schemas/email'
         password:
           type: string
+          format: password
     LoginResponse:
       type: object
       required:
