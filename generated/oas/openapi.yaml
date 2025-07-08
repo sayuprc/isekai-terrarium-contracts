@@ -3,9 +3,50 @@ info:
   title: ヰ世界のテラリウム API
   version: 0.0.0
 tags:
+  - name: Authenticate
   - name: Creator
   - name: SongType
 paths:
+  /auth/login:
+    post:
+      operationId: AuthenticateService_login
+      description: 認証API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Authenticate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
   /creators:
     get:
       operationId: CreatorService_listCreators
@@ -416,6 +457,26 @@ components:
       properties:
         message:
           type: string
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          $ref: '#/components/schemas/email'
+        password:
+          type: string
+    LoginResponse:
+      type: object
+      required:
+        - accessToken
+        - refreshToken
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
     SongType:
       type: object
       required:
@@ -510,6 +571,9 @@ components:
           type: string
         message:
           type: string
+    email:
+      type: string
+      format: email
     uuid:
       type: string
       format: uuid
