@@ -9,8 +9,8 @@ model SongTypeGetResponse {
 }
 
 model SongTypeCreateRequest {
-  songTypeName: SongType.songTypeName;
-  orderNo: SongType.orderNo;
+  songTypeName: songTypeName;
+  orderNo: orderNo;
 }
 
 model SongTypeCreateResponse {
@@ -18,8 +18,8 @@ model SongTypeCreateResponse {
 }
 
 model SongTypeUpdateRequest {
-  songTypeName: SongType.songTypeName;
-  orderNo: SongType.orderNo;
+  songTypeName: songTypeName;
+  orderNo: orderNo;
 }
 
 model SongTypeUpdateResponse {

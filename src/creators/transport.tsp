@@ -9,7 +9,7 @@ model CreatorGetResponse {
 }
 
 model CreatorCreateRequest {
-  creatorName: Creator.creatorName;
+  creatorName: creatorName;
 }
 
 model CreatorCreateResponse {
@@ -17,7 +17,7 @@ model CreatorCreateResponse {
 }
 
 model CreatorUpdateRequest {
-  creatorName: Creator.creatorName;
+  creatorName: creatorName;
 }
 
 model CreatorUpdateResponse {
