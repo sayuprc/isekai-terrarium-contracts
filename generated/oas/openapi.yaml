@@ -393,13 +393,9 @@ components:
         - creatorName
       properties:
         creatorId:
-          allOf:
-            - $ref: '#/components/schemas/uuid'
-          description: クリエイターID
+          $ref: '#/components/schemas/creatorId'
         creatorName:
-          type: string
-          minLength: 1
-          description: クリエイター名
+          $ref: '#/components/schemas/creatorName'
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           creatorName: ヰ世界情緒
@@ -409,9 +405,7 @@ components:
         - creatorName
       properties:
         creatorName:
-          type: string
-          minLength: 1
-          description: クリエイター名
+          $ref: '#/components/schemas/creatorName'
     CreatorCreateResponse:
       type: object
       required:
@@ -441,9 +435,7 @@ components:
         - creatorName
       properties:
         creatorName:
-          type: string
-          minLength: 1
-          description: クリエイター名
+          $ref: '#/components/schemas/creatorName'
     CreatorUpdateResponse:
       type: object
       required:
@@ -477,18 +469,11 @@ components:
         - orderNo
       properties:
         songTypeId:
-          allOf:
-            - $ref: '#/components/schemas/uuid'
-          description: 楽曲種別ID
+          $ref: '#/components/schemas/songTypeId'
         songTypeName:
-          type: string
-          minLength: 1
-          description: 楽曲種別名
+          $ref: '#/components/schemas/songTypeName'
         orderNo:
-          type: integer
-          format: int32
-          minimum: 1
-          description: 表示順
+          $ref: '#/components/schemas/orderNo'
       examples:
         - songTypeId: 5e8211d4-2952-407c-ba7b-18c3fe0da6e0
           songTypeName: オリジナル
@@ -500,14 +485,9 @@ components:
         - orderNo
       properties:
         songTypeName:
-          type: string
-          minLength: 1
-          description: 楽曲種別名
+          $ref: '#/components/schemas/songTypeName'
         orderNo:
-          type: integer
-          format: int32
-          minimum: 1
-          description: 表示順
+          $ref: '#/components/schemas/orderNo'
     SongTypeCreateResponse:
       type: object
       required:
@@ -538,14 +518,9 @@ components:
         - orderNo
       properties:
         songTypeName:
-          type: string
-          minLength: 1
-          description: 楽曲種別名
+          $ref: '#/components/schemas/songTypeName'
         orderNo:
-          type: integer
-          format: int32
-          minimum: 1
-          description: 表示順
+          $ref: '#/components/schemas/orderNo'
     SongTypeUpdateResponse:
       type: object
       required:
@@ -563,12 +538,35 @@ components:
           type: string
         message:
           type: string
+    creatorId:
+      type: string
+      format: uuid
+      description: クリエイターID
+    creatorName:
+      type: string
+      minLength: 1
+      description: クリエイター名
     email:
       type: string
       format: email
+      description: メールアドレス
+    orderNo:
+      type: integer
+      format: int32
+      minimum: 1
+      description: 表示順
+    songTypeId:
+      type: string
+      format: uuid
+      description: 楽曲種別ID
+    songTypeName:
+      type: string
+      minLength: 1
+      description: 楽曲種別名
     uuid:
       type: string
       format: uuid
+      description: UUID v4
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境
