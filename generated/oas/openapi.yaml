@@ -5,6 +5,7 @@ info:
 tags:
   - name: Authenticate
   - name: Creator
+  - name: Performer
   - name: SongType
 paths:
   /auth/login:
@@ -216,6 +217,44 @@ paths:
           description: Server error
       tags:
         - Creator
+  /performers:
+    post:
+      operationId: PerformerService_createPerformer
+      description: パフォーマー作成API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformerCreateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Performer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerformerCreateRequest'
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -461,6 +500,40 @@ components:
         password:
           type: string
           format: password
+    Performer:
+      type: object
+      required:
+        - performerId
+        - performerName
+        - orderNo
+      properties:
+        performerId:
+          $ref: '#/components/schemas/performerId'
+        performerName:
+          $ref: '#/components/schemas/performerName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      examples:
+        - performerId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
+          performerName: ヰ世界情緒
+          orderNo: 1
+    PerformerCreateRequest:
+      type: object
+      required:
+        - performerName
+        - orderNo
+      properties:
+        performerName:
+          $ref: '#/components/schemas/performerName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+    PerformerCreateResponse:
+      type: object
+      required:
+        - performer
+      properties:
+        performer:
+          $ref: '#/components/schemas/Performer'
     SongType:
       type: object
       required:
@@ -555,6 +628,14 @@ components:
       format: int32
       minimum: 1
       description: 表示順
+    performerId:
+      type: string
+      format: uuid
+      description: パフォーマーID
+    performerName:
+      type: string
+      minLength: 1
+      description: パフォーマー名
     songTypeId:
       type: string
       format: uuid
