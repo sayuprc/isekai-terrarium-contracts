@@ -2,10 +2,10 @@ import "../lib";
 
 namespace IsekaiTerrarium;
 
-@doc("パフォーマーID")
+@doc("共演者ID")
 scalar performerId extends uuid;
 
-@doc("パフォーマー名")
+@doc("共演者名")
 @minLength(1)
 scalar performerName extends string;
 

@@ -8,10 +8,10 @@ namespace IsekaiTerrarium;
 @tag("Performer")
 @route("/performers")
 interface PerformerService {
-  @doc("パフォーマー一覧取得API")
+  @doc("共演者一覧取得API")
   listPerformers(): Ok<PerformerListResponse> | ServerError;
 
-  @doc("パフォーマー作成API")
+  @doc("共演者作成API")
   createPerformer(@body request: PerformerCreateRequest):
     | Ok<PerformerCreateResponse>
     | BadRequest
