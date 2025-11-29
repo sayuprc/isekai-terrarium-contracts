@@ -220,7 +220,7 @@ paths:
   /performers:
     get:
       operationId: PerformerService_listPerformers
-      description: パフォーマー一覧取得API
+      description: 共演者一覧取得API
       parameters: []
       responses:
         '200':
@@ -239,7 +239,7 @@ paths:
         - Performer
     post:
       operationId: PerformerService_createPerformer
-      description: パフォーマー作成API
+      description: 共演者作成API
       parameters: []
       responses:
         '200':
@@ -659,11 +659,11 @@ components:
     performerId:
       type: string
       format: uuid
-      description: パフォーマーID
+      description: 共演者ID
     performerName:
       type: string
       minLength: 1
-      description: パフォーマー名
+      description: 共演者名
     songTypeId:
       type: string
       format: uuid
