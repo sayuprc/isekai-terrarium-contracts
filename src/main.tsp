@@ -1,6 +1,7 @@
 import "@typespec/http";
 import "./auth";
 import "./creators";
+import "./performers";
 import "./song-types";
 
 using Http;
