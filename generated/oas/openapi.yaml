@@ -274,6 +274,91 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PerformerCreateRequest'
+  /performers/{performerId}:
+    get:
+      operationId: PerformerService_getPerformer
+      description: 共演者取得API
+      parameters:
+        - name: performerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformerGetResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Performer
+    put:
+      operationId: PerformerService_updatePerformer
+      description: 共演者更新API
+      parameters:
+        - name: performerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformerUpdateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Performer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerformerUpdateRequest'
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -553,6 +638,13 @@ components:
       properties:
         performer:
           $ref: '#/components/schemas/Performer'
+    PerformerGetResponse:
+      type: object
+      required:
+        - performer
+      properties:
+        performer:
+          $ref: '#/components/schemas/Performer'
     PerformerListResponse:
       type: object
       required:
@@ -562,6 +654,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Performer'
+    PerformerUpdateRequest:
+      type: object
+      required:
+        - performerName
+        - orderNo
+      properties:
+        performerName:
+          $ref: '#/components/schemas/performerName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+    PerformerUpdateResponse:
+      type: object
+      required:
+        - performer
+      properties:
+        performer:
+          $ref: '#/components/schemas/Performer'
     SongType:
       type: object
       required:
