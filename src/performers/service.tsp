@@ -28,4 +28,8 @@ interface PerformerService {
     | NotFound
     | Unprocessable
     | ServerError;
+
+  @doc("共演者削除API")
+  @delete
+  deletePerformer(@path performerId: uuid): NoContent | Unprocessable | ServerError;
 }
