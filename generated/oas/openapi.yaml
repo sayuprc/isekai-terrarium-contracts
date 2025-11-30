@@ -359,6 +359,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PerformerUpdateRequest'
+    delete:
+      operationId: PerformerService_deletePerformer
+      description: 共演者削除API
+      parameters:
+        - name: performerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Performer
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
