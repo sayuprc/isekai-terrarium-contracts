@@ -405,154 +405,6 @@ paths:
           description: Server error
       tags:
         - SongType
-    post:
-      operationId: SongTypeService_createSongType
-      description: 楽曲種別作成API
-      parameters: []
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongTypeCreateResponse'
-        '400':
-          description: The server could not understand the request due to invalid syntax.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
-          description: Client error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongType
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SongTypeCreateRequest'
-  /song-types/{songTypeId}:
-    get:
-      operationId: SongTypeService_getSongType
-      description: 楽曲種別取得API
-      parameters:
-        - name: songTypeId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/uuid'
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongTypeGetResponse'
-        '404':
-          description: The server cannot find the requested resource.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
-          description: Client error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongType
-    put:
-      operationId: SongTypeService_updateSongType
-      description: 楽曲種別更新API
-      parameters:
-        - name: songTypeId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/uuid'
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongTypeUpdateResponse'
-        '400':
-          description: The server could not understand the request due to invalid syntax.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '404':
-          description: The server cannot find the requested resource.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
-          description: Client error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongType
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SongTypeUpdateRequest'
-    delete:
-      operationId: SongTypeService_deleteSongType
-      description: 楽曲種別削除API
-      parameters:
-        - name: songTypeId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/uuid'
-      responses:
-        '204':
-          description: 'There is no content to send for this request, but the headers may be useful. '
-        '422':
-          description: Client error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongType
 components:
   schemas:
     Creator:
@@ -700,44 +552,16 @@ components:
     SongType:
       type: object
       required:
-        - songTypeId
         - songTypeName
-        - orderNo
+        - songTypeValue
       properties:
-        songTypeId:
-          $ref: '#/components/schemas/songTypeId'
         songTypeName:
           $ref: '#/components/schemas/songTypeName'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
+        songTypeValue:
+          $ref: '#/components/schemas/SongTypeValue'
       examples:
-        - songTypeId: 5e8211d4-2952-407c-ba7b-18c3fe0da6e0
-          songTypeName: オリジナル
-          orderNo: 1
-    SongTypeCreateRequest:
-      type: object
-      required:
-        - songTypeName
-        - orderNo
-      properties:
-        songTypeName:
-          $ref: '#/components/schemas/songTypeName'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-    SongTypeCreateResponse:
-      type: object
-      required:
-        - songType
-      properties:
-        songType:
-          $ref: '#/components/schemas/SongType'
-    SongTypeGetResponse:
-      type: object
-      required:
-        - songType
-      properties:
-        songType:
-          $ref: '#/components/schemas/SongType'
+        - songTypeName: オリジナル曲
+          songTypeValue: 1
     SongTypeListResponse:
       type: object
       required:
@@ -747,23 +571,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SongType'
-    SongTypeUpdateRequest:
-      type: object
-      required:
-        - songTypeName
-        - orderNo
-      properties:
-        songTypeName:
-          $ref: '#/components/schemas/songTypeName'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-    SongTypeUpdateResponse:
-      type: object
-      required:
-        - songType
-      properties:
-        songType:
-          $ref: '#/components/schemas/SongType'
+    SongTypeValue:
+      type: number
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      description: 楽曲種別の値
     ValidationError:
       type: object
       required:
@@ -799,10 +616,6 @@ components:
       type: string
       minLength: 1
       description: 共演者名
-    songTypeId:
-      type: string
-      format: uuid
-      description: 楽曲種別ID
     songTypeName:
       type: string
       minLength: 1
