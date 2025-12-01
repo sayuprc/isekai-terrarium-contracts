@@ -2,16 +2,22 @@ import "../lib";
 
 namespace IsekaiTerrarium;
 
-@doc("楽曲種別ID")
-scalar songTypeId extends uuid;
-
 @doc("楽曲種別名")
 @minLength(1)
 scalar songTypeName extends string;
 
-@example(#{ songTypeId: "5e8211d4-2952-407c-ba7b-18c3fe0da6e0", songTypeName: "オリジナル", orderNo: 1 })
+@doc("楽曲種別の値")
+enum SongTypeValue {
+  Original: 1,
+  Cover: 2,
+  Collaboration: 3,
+  Lineage: 4,
+  Derivative: 5,
+  Amplified: 6,
+}
+
+@example(#{ songTypeName: "オリジナル曲", songTypeValue: SongTypeValue.Original })
 model SongType {
-  songTypeId: songTypeId;
   songTypeName: songTypeName;
-  orderNo: orderNo;
+  songTypeValue: SongTypeValue;
 }
