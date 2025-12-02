@@ -16,8 +16,8 @@ enum SongTypeValue {
   Amplified: 6,
 }
 
-@example(#{ songTypeName: "オリジナル曲", songTypeValue: SongTypeValue.Original })
+@example(#{ name: "オリジナル曲", value: SongTypeValue.Original })
 model SongType {
-  songTypeName: songTypeName;
-  songTypeValue: SongTypeValue;
+  name: songTypeName;
+  value: SongTypeValue;
 }
