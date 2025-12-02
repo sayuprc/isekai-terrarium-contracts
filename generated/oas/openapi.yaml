@@ -552,16 +552,16 @@ components:
     SongType:
       type: object
       required:
-        - songTypeName
-        - songTypeValue
+        - name
+        - value
       properties:
-        songTypeName:
+        name:
           $ref: '#/components/schemas/songTypeName'
-        songTypeValue:
+        value:
           $ref: '#/components/schemas/SongTypeValue'
       examples:
-        - songTypeName: オリジナル曲
-          songTypeValue: 1
+        - name: オリジナル曲
+          value: 1
     SongTypeListResponse:
       type: object
       required:
