@@ -1,0 +1,30 @@
+[tools]
+node = "22"
+
+[tasks."npm:install"]
+description = "npm のパッケージをインストールする"
+run = "npm i"
+
+[tasks."format:check"]
+description = "フォーマットチェックをする"
+run = "npm run format"
+
+[tasks."format:fix"]
+description = "フォーマット修正をする"
+run = "npm run format:fix"
+
+[tasks.compile]
+description = "tsp から oas を生成する"
+run = "npm run compile"
+
+[tasks."compile:watch"]
+description = "tsp から oas を生成する(watch オプション付き)"
+run = "npm run compile:watch"
+
+[tasks.re-compile]
+description = "tsp から oas を生成し直す"
+run = '''
+rm -rf generated/oas
+npm run compile
+'''
+
