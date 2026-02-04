@@ -7,7 +7,7 @@ run = "npm i"
 
 [tasks."format:check"]
 description = "フォーマットチェックをする"
-run = "npm run format"
+run = "npm run format:check"
 
 [tasks."format:fix"]
 description = "フォーマット修正をする"
