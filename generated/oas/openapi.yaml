@@ -407,6 +407,25 @@ paths:
       tags:
         - SongType
   /songs:
+    get:
+      operationId: SongService_listSongs
+      description: 楽曲一覧取得API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongListResponse'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
     post:
       operationId: SongService_createSong
       description: 楽曲作成API
@@ -750,6 +769,15 @@ components:
           $ref: '#/components/schemas/creatorName'
         orderNo:
           $ref: '#/components/schemas/orderNo'
+    SongListResponse:
+      type: object
+      required:
+        - songs
+      properties:
+        songs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Song'
     SongType:
       type: object
       required:
