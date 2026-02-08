@@ -463,6 +463,91 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SongCreateRequest'
+  /songs/{songId}:
+    get:
+      operationId: SongService_getSong
+      description: 楽曲取得API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongGetResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+    put:
+      operationId: SongService_updateSong
+      description: 楽曲更新API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongUpdateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongUpdateRequest'
 components:
   schemas:
     Arranger:
@@ -769,6 +854,13 @@ components:
           $ref: '#/components/schemas/creatorName'
         orderNo:
           $ref: '#/components/schemas/orderNo'
+    SongGetResponse:
+      type: object
+      required:
+        - song
+      properties:
+        song:
+          $ref: '#/components/schemas/Song'
     SongListResponse:
       type: object
       required:
@@ -810,6 +902,44 @@ components:
         - 5
         - 6
       description: 楽曲種別の値
+    SongUpdateRequest:
+      type: object
+      required:
+        - title
+        - description
+        - songTypeValue
+        - orderNo
+        - arrangers
+        - composers
+        - lyricists
+      properties:
+        title:
+          $ref: '#/components/schemas/title'
+        description:
+          $ref: '#/components/schemas/description'
+        songTypeValue:
+          $ref: '#/components/schemas/SongTypeValue'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestArranger'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestComposer'
+        lyricists:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestLyricist'
+    SongUpdateResponse:
+      type: object
+      required:
+        - song
+      properties:
+        song:
+          $ref: '#/components/schemas/Song'
     ValidationError:
       type: object
       required:
