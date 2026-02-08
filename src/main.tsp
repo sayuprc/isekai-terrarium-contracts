@@ -3,6 +3,7 @@ import "./auth";
 import "./creators";
 import "./performers";
 import "./song-types";
+import "./songs";
 
 using Http;
 

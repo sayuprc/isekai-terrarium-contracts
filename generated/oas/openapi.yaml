@@ -7,6 +7,7 @@ tags:
   - name: Creator
   - name: Performer
   - name: SongType
+  - name: Song
 paths:
   /auth/login:
     post:
@@ -405,8 +406,192 @@ paths:
           description: Server error
       tags:
         - SongType
+  /songs:
+    get:
+      operationId: SongService_listSongs
+      description: 楽曲一覧取得API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongListResponse'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+    post:
+      operationId: SongService_createSong
+      description: 楽曲作成API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongCreateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongCreateRequest'
+  /songs/{songId}:
+    get:
+      operationId: SongService_getSong
+      description: 楽曲取得API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongGetResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+    put:
+      operationId: SongService_updateSong
+      description: 楽曲更新API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongUpdateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: The server cannot find the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongUpdateRequest'
+    delete:
+      operationId: SongService_deleteSong
+      description: 楽曲削除API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
 components:
   schemas:
+    Arranger:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SongCreator'
+      examples:
+        - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+          creatorName: ヰ世界情緒
+          orderNo: 1
+    Composer:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SongCreator'
+      examples:
+        - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+          creatorName: ヰ世界情緒
+          orderNo: 1
     Creator:
       type: object
       required:
@@ -482,6 +667,14 @@ components:
         password:
           type: string
           format: password
+    Lyricist:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SongCreator'
+      examples:
+        - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+          creatorName: ヰ世界情緒
+          orderNo: 1
     Performer:
       type: object
       required:
@@ -549,6 +742,160 @@ components:
       properties:
         performer:
           $ref: '#/components/schemas/Performer'
+    RequestArranger:
+      type: object
+      required:
+        - creatorId
+        - orderNo
+      properties:
+        creatorId:
+          $ref: '#/components/schemas/creatorId'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      description: The template for omitting properties.
+    RequestComposer:
+      type: object
+      required:
+        - creatorId
+        - orderNo
+      properties:
+        creatorId:
+          $ref: '#/components/schemas/creatorId'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      description: The template for omitting properties.
+    RequestLyricist:
+      type: object
+      required:
+        - creatorId
+        - orderNo
+      properties:
+        creatorId:
+          $ref: '#/components/schemas/creatorId'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      description: The template for omitting properties.
+    Song:
+      type: object
+      required:
+        - songId
+        - title
+        - description
+        - songType
+        - orderNo
+        - arrangers
+        - composers
+        - lyricists
+      properties:
+        songId:
+          $ref: '#/components/schemas/songId'
+        title:
+          $ref: '#/components/schemas/title'
+        description:
+          $ref: '#/components/schemas/description'
+        songType:
+          $ref: '#/components/schemas/SongType'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Arranger'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Composer'
+        lyricists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lyricist'
+      examples:
+        - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
+          title: 描き続けた君へ
+          description: オリジナル楽曲
+          songType:
+            name: オリジナル曲
+            value: 1
+          orderNo: 1
+          arrangers:
+            - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+              creatorName: ヰ世界情緒
+              orderNo: 1
+          composers:
+            - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+              creatorName: ヰ世界情緒
+              orderNo: 1
+          lyricists:
+            - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
+              creatorName: ヰ世界情緒
+              orderNo: 1
+    SongCreateRequest:
+      type: object
+      required:
+        - title
+        - description
+        - songTypeValue
+        - orderNo
+        - arrangers
+        - composers
+        - lyricists
+      properties:
+        title:
+          $ref: '#/components/schemas/title'
+        description:
+          $ref: '#/components/schemas/description'
+        songTypeValue:
+          $ref: '#/components/schemas/SongTypeValue'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestArranger'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestComposer'
+        lyricists:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestLyricist'
+    SongCreateResponse:
+      type: object
+      required:
+        - song
+      properties:
+        song:
+          $ref: '#/components/schemas/Song'
+    SongCreator:
+      type: object
+      required:
+        - creatorId
+        - creatorName
+        - orderNo
+      properties:
+        creatorId:
+          $ref: '#/components/schemas/creatorId'
+        creatorName:
+          $ref: '#/components/schemas/creatorName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+    SongGetResponse:
+      type: object
+      required:
+        - song
+      properties:
+        song:
+          $ref: '#/components/schemas/Song'
+    SongListResponse:
+      type: object
+      required:
+        - songs
+      properties:
+        songs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Song'
     SongType:
       type: object
       required:
@@ -581,6 +928,44 @@ components:
         - 5
         - 6
       description: 楽曲種別の値
+    SongUpdateRequest:
+      type: object
+      required:
+        - title
+        - description
+        - songTypeValue
+        - orderNo
+        - arrangers
+        - composers
+        - lyricists
+      properties:
+        title:
+          $ref: '#/components/schemas/title'
+        description:
+          $ref: '#/components/schemas/description'
+        songTypeValue:
+          $ref: '#/components/schemas/SongTypeValue'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestArranger'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestComposer'
+        lyricists:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestLyricist'
+    SongUpdateResponse:
+      type: object
+      required:
+        - song
+      properties:
+        song:
+          $ref: '#/components/schemas/Song'
     ValidationError:
       type: object
       required:
@@ -599,6 +984,10 @@ components:
       type: string
       minLength: 1
       description: クリエイター名
+    description:
+      type: string
+      minLength: 1
+      description: 楽曲の説明
     email:
       type: string
       format: email
@@ -616,10 +1005,18 @@ components:
       type: string
       minLength: 1
       description: 共演者名
+    songId:
+      type: string
+      format: uuid
+      description: 楽曲ID
     songTypeName:
       type: string
       minLength: 1
       description: 楽曲種別名
+    title:
+      type: string
+      minLength: 1
+      description: 楽曲名
     uuid:
       type: string
       format: uuid
