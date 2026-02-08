@@ -1,5 +1,9 @@
 namespace IsekaiTerrarium;
 
+model SongListResponse {
+  songs: Song[];
+}
+
 model SongCreateRequest {
   title: title;
   description: description;
