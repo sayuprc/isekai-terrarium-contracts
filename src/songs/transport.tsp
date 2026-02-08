@@ -4,6 +4,10 @@ model SongListResponse {
   songs: Song[];
 }
 
+model SongGetResponse {
+  song: Song;
+}
+
 model SongCreateRequest {
   title: title;
   description: description;
@@ -15,6 +19,20 @@ model SongCreateRequest {
 }
 
 model SongCreateResponse {
+  song: Song;
+}
+
+model SongUpdateRequest {
+  title: title;
+  description: description;
+  songTypeValue: SongTypeValue;
+  orderNo: orderNo;
+  arrangers: RequestArranger[];
+  composers: RequestComposer[];
+  lyricists: RequestLyricist[];
+}
+
+model SongUpdateResponse {
   song: Song;
 }
 
