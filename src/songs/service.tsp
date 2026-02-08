@@ -14,6 +14,9 @@ interface SongService {
   @doc("楽曲取得API")
   getSong(@path songId: uuid): Ok<SongGetResponse> | NotFound | Unprocessable | ServerError;
 
+  @doc("楽曲作成API")
+  createSong(@body request: SongCreateRequest): Ok<SongCreateResponse> | BadRequest | Unprocessable | ServerError;
+
   @doc("楽曲更新API")
   @put
   updateSong(@path songId: uuid, @body request: SongUpdateRequest):
@@ -23,6 +26,7 @@ interface SongService {
     | Unprocessable
     | ServerError;
 
-  @doc("楽曲作成API")
-  createSong(@body request: SongCreateRequest): Ok<SongCreateResponse> | BadRequest | Unprocessable | ServerError;
+  @doc("楽曲削除API")
+  @delete
+  deleteSong(@path songId: uuid): NoContent | Unprocessable | ServerError;
 }

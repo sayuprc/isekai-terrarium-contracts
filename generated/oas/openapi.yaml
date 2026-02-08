@@ -548,6 +548,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SongUpdateRequest'
+    delete:
+      operationId: SongService_deleteSong
+      description: 楽曲削除API
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/uuid'
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Song
 components:
   schemas:
     Arranger:
