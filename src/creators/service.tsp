@@ -32,5 +32,5 @@ interface CreatorService {
 
   @doc("クリエイター削除API")
   @delete
-  deleteCreator(@path creatorId: uuid): NoContent | Unprocessable | ServerError;
+  deleteCreator(@path creatorId: uuid): NoContent | BadRequest | Unprocessable | ServerError;
 }
