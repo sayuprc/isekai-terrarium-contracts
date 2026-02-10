@@ -13,6 +13,7 @@ interface PerformerService {
 
   @doc("共演者取得API")
   getPerformer(@path performerId: uuid): Ok<PerformerGetResponse> | NotFound | Unprocessable | ServerError;
+
   @doc("共演者作成API")
   createPerformer(@body request: PerformerCreateRequest):
     | Ok<PerformerCreateResponse>

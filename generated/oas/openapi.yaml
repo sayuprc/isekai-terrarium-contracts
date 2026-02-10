@@ -702,12 +702,9 @@ components:
       type: object
       required:
         - performerName
-        - orderNo
       properties:
         performerName:
           $ref: '#/components/schemas/performerName'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
     PerformerCreateResponse:
       type: object
       required:
@@ -752,35 +749,26 @@ components:
       type: object
       required:
         - creatorId
-        - orderNo
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-      description: The template for omitting properties.
+      description: The template for picking properties.
     RequestComposer:
       type: object
       required:
         - creatorId
-        - orderNo
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-      description: The template for omitting properties.
+      description: The template for picking properties.
     RequestLyricist:
       type: object
       required:
         - creatorId
-        - orderNo
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-      description: The template for omitting properties.
+      description: The template for picking properties.
     Song:
       type: object
       required:
@@ -841,7 +829,6 @@ components:
         - title
         - description
         - songTypeValue
-        - orderNo
         - arrangers
         - composers
         - lyricists
@@ -852,8 +839,6 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
         arrangers:
           type: array
           items:
