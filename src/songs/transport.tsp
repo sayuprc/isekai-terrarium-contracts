@@ -12,7 +12,6 @@ model SongCreateRequest {
   title: title;
   description: description;
   songTypeValue: SongTypeValue;
-  orderNo: orderNo;
   arrangers: RequestArranger[];
   composers: RequestComposer[];
   lyricists: RequestLyricist[];
@@ -36,8 +35,8 @@ model SongUpdateResponse {
   song: Song;
 }
 
-model RequestArranger is OmitProperties<Arranger, "creatorName">;
+model RequestArranger is PickProperties<Arranger, "creatorId">;
 
-model RequestComposer is OmitProperties<Composer, "creatorName">;
+model RequestComposer is PickProperties<Composer, "creatorId">;
 
-model RequestLyricist is OmitProperties<Lyricist, "creatorName">;
+model RequestLyricist is PickProperties<Lyricist, "creatorId">;
