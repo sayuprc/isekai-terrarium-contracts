@@ -62,6 +62,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatorListResponse'
+        '401':
+          description: Access is unauthorized.
         '500':
           description: Server error
         '503':
@@ -70,6 +72,8 @@ paths:
           description: Server error
       tags:
         - Creator
+      security:
+        - CookieAuth: []
     post:
       operationId: CreatorService_createCreator
       description: クリエイター作成API
@@ -87,6 +91,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -107,6 +113,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreatorCreateRequest'
+      security:
+        - CookieAuth: []
   /creators/{creatorId}:
     get:
       operationId: CreatorService_getCreator
@@ -124,6 +132,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatorGetResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -144,6 +154,8 @@ paths:
           description: Server error
       tags:
         - Creator
+      security:
+        - CookieAuth: []
     put:
       operationId: CreatorService_updateCreator
       description: クリエイター更新API
@@ -166,6 +178,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -192,6 +206,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreatorUpdateRequest'
+      security:
+        - CookieAuth: []
     delete:
       operationId: CreatorService_deleteCreator
       description: クリエイター削除API
@@ -210,6 +226,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -224,6 +242,8 @@ paths:
           description: Server error
       tags:
         - Creator
+      security:
+        - CookieAuth: []
   /performers:
     get:
       operationId: PerformerService_listPerformers
@@ -236,6 +256,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PerformerListResponse'
+        '401':
+          description: Access is unauthorized.
         '500':
           description: Server error
         '503':
@@ -244,6 +266,8 @@ paths:
           description: Server error
       tags:
         - Performer
+      security:
+        - CookieAuth: []
     post:
       operationId: PerformerService_createPerformer
       description: 共演者作成API
@@ -261,6 +285,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -281,6 +307,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PerformerCreateRequest'
+      security:
+        - CookieAuth: []
   /performers/{performerId}:
     get:
       operationId: PerformerService_getPerformer
@@ -298,6 +326,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PerformerGetResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -318,6 +348,8 @@ paths:
           description: Server error
       tags:
         - Performer
+      security:
+        - CookieAuth: []
     put:
       operationId: PerformerService_updatePerformer
       description: 共演者更新API
@@ -340,6 +372,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -366,6 +400,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PerformerUpdateRequest'
+      security:
+        - CookieAuth: []
     delete:
       operationId: PerformerService_deletePerformer
       description: 共演者削除API
@@ -378,6 +414,8 @@ paths:
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -392,6 +430,8 @@ paths:
           description: Server error
       tags:
         - Performer
+      security:
+        - CookieAuth: []
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -404,6 +444,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SongTypeListResponse'
+        '401':
+          description: Access is unauthorized.
         '500':
           description: Server error
         '503':
@@ -412,6 +454,8 @@ paths:
           description: Server error
       tags:
         - SongType
+      security:
+        - CookieAuth: []
   /songs:
     get:
       operationId: SongService_listSongs
@@ -424,6 +468,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SongListResponse'
+        '401':
+          description: Access is unauthorized.
         '500':
           description: Server error
         '503':
@@ -432,6 +478,8 @@ paths:
           description: Server error
       tags:
         - Song
+      security:
+        - CookieAuth: []
     post:
       operationId: SongService_createSong
       description: 楽曲作成API
@@ -449,6 +497,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -469,6 +519,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SongCreateRequest'
+      security:
+        - CookieAuth: []
   /songs/{songId}:
     get:
       operationId: SongService_getSong
@@ -486,6 +538,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SongGetResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -506,6 +560,8 @@ paths:
           description: Server error
       tags:
         - Song
+      security:
+        - CookieAuth: []
     put:
       operationId: SongService_updateSong
       description: 楽曲更新API
@@ -528,6 +584,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -554,6 +612,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SongUpdateRequest'
+      security:
+        - CookieAuth: []
     delete:
       operationId: SongService_deleteSong
       description: 楽曲削除API
@@ -566,6 +626,8 @@ paths:
       responses:
         '204':
           description: 'There is no content to send for this request, but the headers may be useful. '
+        '401':
+          description: Access is unauthorized.
         '422':
           description: Client error
           content:
@@ -580,6 +642,8 @@ paths:
           description: Server error
       tags:
         - Song
+      security:
+        - CookieAuth: []
 components:
   schemas:
     Arranger:
@@ -598,6 +662,29 @@ components:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           creatorName: ヰ世界情緒
           orderNo: 1
+    CookieAuth:
+      type: object
+      required:
+        - type
+        - in
+        - name
+      properties:
+        type:
+          type: string
+          enum:
+            - apiKey
+          description: API key authentication
+        in:
+          type: string
+          enum:
+            - cookie
+          description: location of the API key
+        name:
+          type: string
+          enum:
+            - access_token
+          description: name of the API key
+      description: ''
     Creator:
       type: object
       required:
@@ -1012,6 +1099,11 @@ components:
       type: string
       format: uuid
       description: UUID v4
+  securitySchemes:
+    CookieAuth:
+      type: apiKey
+      in: cookie
+      name: access_token
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境
