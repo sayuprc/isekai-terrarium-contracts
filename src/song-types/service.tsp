@@ -11,5 +11,5 @@ namespace IsekaiTerrarium;
 @useAuth(CookieAuth)
 interface SongTypeService {
   @doc("楽曲種別一覧取得API")
-  listSongTypes(): Ok<SongTypeListResponse> | Unauthorized | ServerError;
+  listSongTypes(): Ok<SongTypeListResponse> | Unauthorized | Forbidden | ServerError;
 }

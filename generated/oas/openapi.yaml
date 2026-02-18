@@ -64,6 +64,8 @@ paths:
                 $ref: '#/components/schemas/CreatorListResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '500':
           description: Server error
         '503':
@@ -93,6 +95,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:
@@ -134,6 +138,8 @@ paths:
                 $ref: '#/components/schemas/CreatorGetResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -180,6 +186,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -228,6 +236,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:
@@ -258,6 +268,8 @@ paths:
                 $ref: '#/components/schemas/PerformerListResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '500':
           description: Server error
         '503':
@@ -287,6 +299,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:
@@ -328,6 +342,8 @@ paths:
                 $ref: '#/components/schemas/PerformerGetResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -374,6 +390,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -416,6 +434,8 @@ paths:
           description: 'There is no content to send for this request, but the headers may be useful. '
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:
@@ -446,6 +466,8 @@ paths:
                 $ref: '#/components/schemas/SongTypeListResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '500':
           description: Server error
         '503':
@@ -470,6 +492,8 @@ paths:
                 $ref: '#/components/schemas/SongListResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '500':
           description: Server error
         '503':
@@ -499,6 +523,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:
@@ -540,6 +566,8 @@ paths:
                 $ref: '#/components/schemas/SongGetResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -586,6 +614,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '404':
           description: The server cannot find the requested resource.
           content:
@@ -628,6 +658,8 @@ paths:
           description: 'There is no content to send for this request, but the headers may be useful. '
         '401':
           description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
         '422':
           description: Client error
           content:

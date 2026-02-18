@@ -11,12 +11,13 @@ namespace IsekaiTerrarium;
 @useAuth(CookieAuth)
 interface PerformerService {
   @doc("共演者一覧取得API")
-  listPerformers(): Ok<PerformerListResponse> | Unauthorized | ServerError;
+  listPerformers(): Ok<PerformerListResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("共演者取得API")
   getPerformer(@path performerId: uuid):
     | Ok<PerformerGetResponse>
     | Unauthorized
+    | Forbidden
     | NotFound
     | Unprocessable
     | ServerError;
@@ -26,6 +27,7 @@ interface PerformerService {
     | Ok<PerformerCreateResponse>
     | BadRequest
     | Unauthorized
+    | Forbidden
     | Unprocessable
     | ServerError;
 
@@ -35,11 +37,12 @@ interface PerformerService {
     | Ok<PerformerUpdateResponse>
     | BadRequest
     | Unauthorized
+    | Forbidden
     | NotFound
     | Unprocessable
     | ServerError;
 
   @doc("共演者削除API")
   @delete
-  deletePerformer(@path performerId: uuid): NoContent | Unauthorized | Unprocessable | ServerError;
+  deletePerformer(@path performerId: uuid): NoContent | Unauthorized | Forbidden | Unprocessable | ServerError;
 }

@@ -11,16 +11,17 @@ namespace IsekaiTerrarium;
 @useAuth(CookieAuth)
 interface SongService {
   @doc("楽曲一覧取得API")
-  listSongs(): Ok<SongListResponse> | Unauthorized | ServerError;
+  listSongs(): Ok<SongListResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("楽曲取得API")
-  getSong(@path songId: uuid): Ok<SongGetResponse> | Unauthorized | NotFound | Unprocessable | ServerError;
+  getSong(@path songId: uuid): Ok<SongGetResponse> | Unauthorized | Forbidden | NotFound | Unprocessable | ServerError;
 
   @doc("楽曲作成API")
   createSong(@body request: SongCreateRequest):
     | Ok<SongCreateResponse>
     | BadRequest
     | Unauthorized
+    | Forbidden
     | Unprocessable
     | ServerError;
 
@@ -30,11 +31,12 @@ interface SongService {
     | Ok<SongUpdateResponse>
     | BadRequest
     | Unauthorized
+    | Forbidden
     | NotFound
     | Unprocessable
     | ServerError;
 
   @doc("楽曲削除API")
   @delete
-  deleteSong(@path songId: uuid): NoContent | Unauthorized | Unprocessable | ServerError;
+  deleteSong(@path songId: uuid): NoContent | Unauthorized | Forbidden | Unprocessable | ServerError;
 }
