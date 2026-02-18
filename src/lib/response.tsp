@@ -20,6 +20,10 @@ model Unauthorized {
   @statusCode _: 401;
 }
 
+model Forbidden {
+  @statusCode _: 403;
+}
+
 model NotFound {
   @statusCode _: 404;
   @body body: ErrorResponse;
