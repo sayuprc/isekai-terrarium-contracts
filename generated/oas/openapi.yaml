@@ -3,12 +3,39 @@ info:
   title: ヰ世界のテラリウム API
   version: 0.0.0
 tags:
+  - name: AdminUser
   - name: Authenticate
   - name: Creator
   - name: Performer
   - name: SongType
   - name: Song
 paths:
+  /admin-users:
+    get:
+      operationId: AdminUserService_listAdminUsers
+      description: 管理ユーザー一覧取得API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminUserListResponse'
+        '401':
+          description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - AdminUser
+      security:
+        - CookieAuth: []
   /auth/login:
     post:
       operationId: AuthenticateService_login
@@ -678,6 +705,50 @@ paths:
         - CookieAuth: []
 components:
   schemas:
+    AdminUser:
+      type: object
+      required:
+        - adminUserId
+        - adminUserName
+        - email
+        - createdAt
+        - role
+        - permissions
+      properties:
+        adminUserId:
+          $ref: '#/components/schemas/adminUserId'
+        adminUserName:
+          $ref: '#/components/schemas/adminUserName'
+        email:
+          $ref: '#/components/schemas/email'
+        createdAt:
+          $ref: '#/components/schemas/createdAt'
+        role:
+          $ref: '#/components/schemas/Role'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+      examples:
+        - adminUserId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
+          adminUserName: 管理ユーザー名
+          email: example@example.com
+          createdAt: '2019-12-09T10:30:20+09:00'
+          role:
+            name: 一般
+            value: 3
+          permissions:
+            - name: 管理ユーザー読み取り
+              value: read_admin_user
+    AdminUserListResponse:
+      type: object
+      required:
+        - adminUsers
+      properties:
+        adminUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminUser'
     Arranger:
       type: object
       allOf:
@@ -864,6 +935,32 @@ components:
       properties:
         performer:
           $ref: '#/components/schemas/Performer'
+    Permission:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          $ref: '#/components/schemas/permissionName'
+        value:
+          $ref: '#/components/schemas/PermissionValue'
+      examples:
+        - name: 管理ユーザー読み取り
+          value: read_admin_user
+    PermissionValue:
+      type: string
+      enum:
+        - read_admin_user
+        - write_admin_user
+        - read_creator
+        - write_creator
+        - read_performer
+        - write_performer
+        - read_song
+        - write_song
+        - read_song_type
+      description: 権限の値
     RequestArranger:
       type: object
       required:
@@ -888,6 +985,26 @@ components:
         creatorId:
           $ref: '#/components/schemas/creatorId'
       description: The template for picking properties.
+    Role:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          $ref: '#/components/schemas/roleName'
+        value:
+          $ref: '#/components/schemas/RoleValue'
+      examples:
+        - name: 特権
+          value: 1
+    RoleValue:
+      type: number
+      enum:
+        - 1
+        - 2
+        - 3
+      description: 役割の値
     Song:
       type: object
       required:
@@ -1086,6 +1203,17 @@ components:
           type: string
         message:
           type: string
+    adminUserId:
+      type: string
+      format: uuid
+      description: 管理ユーザーID
+    adminUserName:
+      type: string
+      description: 管理ユーザー名
+    createdAt:
+      type: string
+      format: date-time
+      description: 作成日時
     creatorId:
       type: string
       format: uuid
@@ -1115,6 +1243,14 @@ components:
       type: string
       minLength: 1
       description: 共演者名
+    permissionName:
+      type: string
+      minLength: 1
+      description: 権限名
+    roleName:
+      type: string
+      minLength: 1
+      description: 役割名
     songId:
       type: string
       format: uuid
