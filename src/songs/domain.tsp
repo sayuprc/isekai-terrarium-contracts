@@ -21,9 +21,9 @@ scalar description extends string;
   description: "オリジナル楽曲",
   songType: #{ name: "オリジナル曲", value: SongTypeValue.Original },
   orderNo: 1,
-  arrangers: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 }],
-  composers: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 }],
-  lyricists: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 }],
+  arrangers: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
+  composers: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
+  lyricists: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
 })
 model Song {
   songId: songId;
@@ -38,15 +38,15 @@ model Song {
 
 model SongCreator {
   creatorId: creatorId;
-  creatorName: creatorName;
+  name: creatorName;
   orderNo: orderNo;
 }
 
-@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 })
+@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 })
 model Arranger extends SongCreator {}
 
-@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 })
+@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 })
 model Composer extends SongCreator {}
 
-@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", creatorName: "ヰ世界情緒", orderNo: 1 })
+@example(#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 })
 model Lyricist extends SongCreator {}

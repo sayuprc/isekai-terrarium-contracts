@@ -709,7 +709,7 @@ components:
       type: object
       required:
         - adminUserId
-        - adminUserName
+        - name
         - email
         - createdAt
         - role
@@ -717,7 +717,7 @@ components:
       properties:
         adminUserId:
           $ref: '#/components/schemas/adminUserId'
-        adminUserName:
+        name:
           $ref: '#/components/schemas/adminUserName'
         email:
           $ref: '#/components/schemas/email'
@@ -731,7 +731,7 @@ components:
             $ref: '#/components/schemas/Permission'
       examples:
         - adminUserId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
-          adminUserName: 管理ユーザー名
+          name: 管理ユーザー名
           email: example@example.com
           createdAt: '2019-12-09T10:30:20+09:00'
           role:
@@ -755,7 +755,7 @@ components:
         - $ref: '#/components/schemas/SongCreator'
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-          creatorName: ヰ世界情緒
+          name: ヰ世界情緒
           orderNo: 1
     Composer:
       type: object
@@ -763,7 +763,7 @@ components:
         - $ref: '#/components/schemas/SongCreator'
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-          creatorName: ヰ世界情緒
+          name: ヰ世界情緒
           orderNo: 1
     CookieAuth:
       type: object
@@ -792,21 +792,21 @@ components:
       type: object
       required:
         - creatorId
-        - creatorName
+        - name
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
-        creatorName:
+        name:
           $ref: '#/components/schemas/creatorName'
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
-          creatorName: ヰ世界情緒
+          name: ヰ世界情緒
     CreatorCreateRequest:
       type: object
       required:
-        - creatorName
+        - name
       properties:
-        creatorName:
+        name:
           $ref: '#/components/schemas/creatorName'
     CreatorCreateResponse:
       type: object
@@ -834,9 +834,9 @@ components:
     CreatorUpdateRequest:
       type: object
       required:
-        - creatorName
+        - name
       properties:
-        creatorName:
+        name:
           $ref: '#/components/schemas/creatorName'
     CreatorUpdateResponse:
       type: object
@@ -869,31 +869,31 @@ components:
         - $ref: '#/components/schemas/SongCreator'
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-          creatorName: ヰ世界情緒
+          name: ヰ世界情緒
           orderNo: 1
     Performer:
       type: object
       required:
         - performerId
-        - performerName
+        - name
         - orderNo
       properties:
         performerId:
           $ref: '#/components/schemas/performerId'
-        performerName:
+        name:
           $ref: '#/components/schemas/performerName'
         orderNo:
           $ref: '#/components/schemas/orderNo'
       examples:
         - performerId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
-          performerName: ヰ世界情緒
+          name: ヰ世界情緒
           orderNo: 1
     PerformerCreateRequest:
       type: object
       required:
-        - performerName
+        - name
       properties:
-        performerName:
+        name:
           $ref: '#/components/schemas/performerName'
     PerformerCreateResponse:
       type: object
@@ -921,10 +921,10 @@ components:
     PerformerUpdateRequest:
       type: object
       required:
-        - performerName
+        - name
         - orderNo
       properties:
-        performerName:
+        name:
           $ref: '#/components/schemas/performerName'
         orderNo:
           $ref: '#/components/schemas/orderNo'
@@ -1049,15 +1049,15 @@ components:
           orderNo: 1
           arrangers:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-              creatorName: ヰ世界情緒
+              name: ヰ世界情緒
               orderNo: 1
           composers:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-              creatorName: ヰ世界情緒
+              name: ヰ世界情緒
               orderNo: 1
           lyricists:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
-              creatorName: ヰ世界情緒
+              name: ヰ世界情緒
               orderNo: 1
     SongCreateRequest:
       type: object
@@ -1098,12 +1098,12 @@ components:
       type: object
       required:
         - creatorId
-        - creatorName
+        - name
         - orderNo
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
-        creatorName:
+        name:
           $ref: '#/components/schemas/creatorName'
         orderNo:
           $ref: '#/components/schemas/orderNo'
