@@ -9,7 +9,7 @@ model PerformerGetResponse {
 }
 
 model PerformerCreateRequest {
-  performerName: performerName;
+  name: performerName;
 }
 
 model PerformerCreateResponse {
@@ -17,7 +17,7 @@ model PerformerCreateResponse {
 }
 
 model PerformerUpdateRequest {
-  performerName: performerName;
+  name: performerName;
   orderNo: orderNo;
 }
 

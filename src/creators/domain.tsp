@@ -9,8 +9,8 @@ scalar creatorId extends uuid;
 @minLength(1)
 scalar creatorName extends string;
 
-@example(#{ creatorId: "0cc5f492-22fe-4f38-b702-8b2375bc0254", creatorName: "ヰ世界情緒" })
+@example(#{ creatorId: "0cc5f492-22fe-4f38-b702-8b2375bc0254", name: "ヰ世界情緒" })
 model Creator {
   creatorId: creatorId;
-  creatorName: creatorName;
+  name: creatorName;
 }
