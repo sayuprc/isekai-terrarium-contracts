@@ -1,4 +1,5 @@
 import "@typespec/http";
+import "./admin-users";
 import "./auth";
 import "./creators";
 import "./performers";
