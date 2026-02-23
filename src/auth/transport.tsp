@@ -7,17 +7,10 @@ namespace IsekaiTerrarium;
 
 model LoginRequest {
   email: email;
-
-  @secret
-  password: string;
+  password: password;
 }
 
 model LoginResponse {
-  @statusCode _: 200;
-
-  @header("Set-Cookie")
-  accessToken: string;
-
-  @header("Set-Cookie")
-  refreshToken: string;
+  accessToken: accessToken;
+  refreshToken: refreshToken;
 }
