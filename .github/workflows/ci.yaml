@@ -26,18 +26,18 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./node_modules
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          key: node-modules-${{ hashFiles('**/bun.lock') }}
 
       - name: Install packages
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm i
+        run: mise run install
 
       - name: Check format
-        run: npm run format:check
+        run: mise run format:check
 
       - name: Check generate code has diff
         run: |
-          npm run compile
+          mise run compile
           if [ -n "$(git status --porcelain)" ]; then
             echo "自動生成コードに差分があります"
             git status

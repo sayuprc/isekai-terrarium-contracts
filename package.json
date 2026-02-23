@@ -22,6 +22,5 @@
     "format:check": "tsp format --check \"**/*.tsp\"",
     "format:fix": "tsp format \"**/*.tsp\""
   },
-  "private": true,
-  "packageManager": "npm@11.8.0"
+  "private": true
 }
