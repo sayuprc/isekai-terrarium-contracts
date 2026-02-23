@@ -8,7 +8,7 @@ namespace IsekaiTerrarium;
 
 @tag("AdminUser")
 @route("/admin-users")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface AdminUserService {
   @doc("管理ユーザー一覧取得API")
   listAdminUsers(): Ok<AdminUserListResponse> | Unauthorized | Forbidden | ServerError;

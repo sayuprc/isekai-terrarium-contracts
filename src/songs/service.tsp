@@ -8,7 +8,7 @@ namespace IsekaiTerrarium;
 
 @tag("Song")
 @route("/songs")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface SongService {
   @doc("楽曲一覧取得API")
   listSongs(): Ok<SongListResponse> | Unauthorized | Forbidden | ServerError;

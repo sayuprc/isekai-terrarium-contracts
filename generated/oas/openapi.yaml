@@ -35,7 +35,7 @@ paths:
       tags:
         - AdminUser
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /auth/login:
     post:
       operationId: AuthenticateService_login
@@ -44,11 +44,10 @@ paths:
       responses:
         '200':
           description: The request has succeeded.
-          headers:
-            Set-Cookie:
-              required: true
+          content:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/LoginResponse'
         '400':
           description: The server could not understand the request due to invalid syntax.
           content:
@@ -102,7 +101,7 @@ paths:
       tags:
         - Creator
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     post:
       operationId: CreatorService_createCreator
       description: クリエイター作成API
@@ -145,7 +144,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreatorCreateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /creators/{creatorId}:
     get:
       operationId: CreatorService_getCreator
@@ -188,7 +187,7 @@ paths:
       tags:
         - Creator
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     put:
       operationId: CreatorService_updateCreator
       description: クリエイター更新API
@@ -242,7 +241,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreatorUpdateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     delete:
       operationId: CreatorService_deleteCreator
       description: クリエイター削除API
@@ -280,7 +279,7 @@ paths:
       tags:
         - Creator
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /performers:
     get:
       operationId: PerformerService_listPerformers
@@ -306,7 +305,7 @@ paths:
       tags:
         - Performer
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     post:
       operationId: PerformerService_createPerformer
       description: 共演者作成API
@@ -349,7 +348,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PerformerCreateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /performers/{performerId}:
     get:
       operationId: PerformerService_getPerformer
@@ -392,7 +391,7 @@ paths:
       tags:
         - Performer
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     put:
       operationId: PerformerService_updatePerformer
       description: 共演者更新API
@@ -446,7 +445,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PerformerUpdateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     delete:
       operationId: PerformerService_deletePerformer
       description: 共演者削除API
@@ -478,7 +477,7 @@ paths:
       tags:
         - Performer
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /song-types:
     get:
       operationId: SongTypeService_listSongTypes
@@ -504,7 +503,7 @@ paths:
       tags:
         - SongType
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /songs:
     get:
       operationId: SongService_listSongs
@@ -530,7 +529,7 @@ paths:
       tags:
         - Song
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     post:
       operationId: SongService_createSong
       description: 楽曲作成API
@@ -573,7 +572,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SongCreateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
   /songs/{songId}:
     get:
       operationId: SongService_getSong
@@ -616,7 +615,7 @@ paths:
       tags:
         - Song
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     put:
       operationId: SongService_updateSong
       description: 楽曲更新API
@@ -670,7 +669,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SongUpdateRequest'
       security:
-        - CookieAuth: []
+        - BearerAuth: []
     delete:
       operationId: SongService_deleteSong
       description: 楽曲削除API
@@ -702,7 +701,7 @@ paths:
       tags:
         - Song
       security:
-        - CookieAuth: []
+        - BearerAuth: []
 components:
   schemas:
     AdminUser:
@@ -765,29 +764,6 @@ components:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           name: ヰ世界情緒
           orderNo: 1
-    CookieAuth:
-      type: object
-      required:
-        - type
-        - in
-        - name
-      properties:
-        type:
-          type: string
-          enum:
-            - apiKey
-          description: API key authentication
-        in:
-          type: string
-          enum:
-            - cookie
-          description: location of the API key
-        name:
-          type: string
-          enum:
-            - access_token
-          description: name of the API key
-      description: ''
     Creator:
       type: object
       required:
@@ -861,8 +837,17 @@ components:
         email:
           $ref: '#/components/schemas/email'
         password:
-          type: string
-          format: password
+          $ref: '#/components/schemas/password'
+    LoginResponse:
+      type: object
+      required:
+        - accessToken
+        - refreshToken
+      properties:
+        accessToken:
+          $ref: '#/components/schemas/accessToken'
+        refreshToken:
+          $ref: '#/components/schemas/refreshToken'
     Lyricist:
       type: object
       allOf:
@@ -1203,6 +1188,10 @@ components:
           type: string
         message:
           type: string
+    accessToken:
+      type: string
+      format: password
+      description: アクセストークン(JWT)
     adminUserId:
       type: string
       format: uuid
@@ -1235,6 +1224,10 @@ components:
       format: int32
       minimum: 1
       description: 表示順
+    password:
+      type: string
+      format: password
+      description: 平文パスワード
     performerId:
       type: string
       format: uuid
@@ -1247,6 +1240,10 @@ components:
       type: string
       minLength: 1
       description: 権限名
+    refreshToken:
+      type: string
+      format: password
+      description: リフレッシュトークン
     roleName:
       type: string
       minLength: 1
@@ -1268,10 +1265,9 @@ components:
       format: uuid
       description: UUID v4
   securitySchemes:
-    CookieAuth:
-      type: apiKey
-      in: cookie
-      name: access_token
+    BearerAuth:
+      type: http
+      scheme: Bearer
 servers:
   - url: https://local.admin.terrarium.isekaijoucho.fan/api
     description: ローカル環境

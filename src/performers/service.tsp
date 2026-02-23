@@ -8,7 +8,7 @@ namespace IsekaiTerrarium;
 
 @tag("Performer")
 @route("/performers")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface PerformerService {
   @doc("共演者一覧取得API")
   listPerformers(): Ok<PerformerListResponse> | Unauthorized | Forbidden | ServerError;
