@@ -3,7 +3,7 @@ import "../lib";
 
 using Http;
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 model LoginRequest {
   email: email;

@@ -1,6 +1,6 @@
 import "../lib";
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @doc("管理ユーザーID")
 scalar adminUserId extends uuid;

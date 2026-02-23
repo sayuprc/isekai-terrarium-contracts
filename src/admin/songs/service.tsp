@@ -4,7 +4,7 @@ import "../auth";
 
 using Http;
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @tag("Song")
 @route("/songs")

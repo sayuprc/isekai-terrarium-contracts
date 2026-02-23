@@ -37,7 +37,7 @@ jobs:
 
       - name: Check generate code has diff
         run: |
-          mise run compile
+          mise run compile:all
           if [ -n "$(git status --porcelain | grep generated)" ]; then
             echo "自動生成コードに差分があります"
             git status

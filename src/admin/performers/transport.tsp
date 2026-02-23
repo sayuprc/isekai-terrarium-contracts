@@ -1,4 +1,4 @@
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 model PerformerListResponse {
   performers: Performer[];
