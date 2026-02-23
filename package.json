@@ -14,11 +14,14 @@
     "@typespec/http": "^1.9.0",
     "@typespec/openapi": "^1.9.0",
     "@typespec/openapi3": "^1.9.0",
-    "@typespec/rest": "^0.79.0"
+    "@typespec/rest": "^0.79.0",
+    "@typespec/versioning": "^0.79.0"
   },
   "scripts": {
-    "compile": "tsp compile ./src",
-    "compile:watch": "tsp compile ./src --watch",
+    "compile:client": "tsp compile ./src/client/main.tsp",
+    "compile:client:watch": "tsp compile ./src/client/main.tsp --watch",
+    "compile:admin": "tsp compile ./src/admin/main.tsp",
+    "compile:admin:watch": "tsp compile ./src/admin/main.tsp --watch",
     "format:check": "tsp format --check \"**/*.tsp\"",
     "format:fix": "tsp format \"**/*.tsp\""
   },

@@ -2,7 +2,7 @@ import "../lib";
 import "../song-types";
 import "../creators";
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @doc("楽曲ID")
 scalar songId extends uuid;

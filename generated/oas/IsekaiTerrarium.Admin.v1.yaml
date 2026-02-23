@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: ヰ世界のテラリウム API
-  version: 0.0.0
+  title: ヰ世界のテラリウム 管理画面向け API
+  version: v1
 tags:
   - name: AdminUser
   - name: Authenticate
@@ -828,6 +828,10 @@ components:
       properties:
         message:
           type: string
+    IsekaiTerrarium.Admin.Version:
+      type: string
+      enum:
+        - v1
     LoginRequest:
       type: object
       required:
@@ -1188,6 +1192,10 @@ components:
           type: string
         message:
           type: string
+    Version:
+      type: string
+      enum:
+        - v1
     accessToken:
       type: string
       format: password
@@ -1269,6 +1277,10 @@ components:
       type: http
       scheme: Bearer
 servers:
-  - url: https://local.admin.terrarium.isekaijoucho.fan/api
+  - url: https://local.api.terrarium.isekaijoucho.fan/admin/{version}
     description: ローカル環境
-    variables: {}
+    variables:
+      version:
+        default: ''
+        enum:
+          - v1

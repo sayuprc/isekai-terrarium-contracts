@@ -1,6 +1,6 @@
-import "./domain.tsp";
-import "./service.tsp";
-import "./transport.tsp";
+import "../lib";
+
+namespace IsekaiTerrarium.Admin;
 
 @doc("平文パスワード")
 @secret
