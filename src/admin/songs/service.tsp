@@ -4,11 +4,11 @@ import "../auth";
 
 using Http;
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @tag("Song")
 @route("/songs")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface SongService {
   @doc("楽曲一覧取得API")
   listSongs(): Ok<SongListResponse> | Unauthorized | Forbidden | ServerError;

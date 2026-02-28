@@ -4,11 +4,11 @@ import "../auth";
 
 using Http;
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @tag("Creator")
 @route("/creators")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface CreatorService {
   @doc("クリエイター一覧取得API")
   listCreators(): Ok<CreatorListResponse> | Unauthorized | Forbidden | ServerError;

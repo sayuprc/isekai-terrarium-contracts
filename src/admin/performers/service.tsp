@@ -4,11 +4,11 @@ import "../auth";
 
 using Http;
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @tag("Performer")
 @route("/performers")
-@useAuth(CookieAuth)
+@useAuth(BearerAuth)
 interface PerformerService {
   @doc("共演者一覧取得API")
   listPerformers(): Ok<PerformerListResponse> | Unauthorized | Forbidden | ServerError;

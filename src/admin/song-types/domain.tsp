@@ -1,6 +1,6 @@
 import "../lib";
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @doc("楽曲種別名")
 @minLength(1)

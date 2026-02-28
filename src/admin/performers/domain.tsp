@@ -1,6 +1,6 @@
 import "../lib";
 
-namespace IsekaiTerrarium;
+namespace IsekaiTerrarium.Admin;
 
 @doc("共演者ID")
 scalar performerId extends uuid;

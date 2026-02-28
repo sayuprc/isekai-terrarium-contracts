@@ -1,30 +1,41 @@
 [tools]
-node = "24"
+bun = "1.3.9"
 
-[tasks."npm:install"]
-description = "npm のパッケージをインストールする"
-run = "npm i"
+[tasks.install]
+description = "パッケージをインストールする"
+run = "bun install"
 
 [tasks."format:check"]
 description = "フォーマットチェックをする"
-run = "npm run format:check"
+run = "bun run format:check"
 
 [tasks."format:fix"]
 description = "フォーマット修正をする"
-run = "npm run format:fix"
+run = "bun run format:fix"
 
-[tasks.compile]
-description = "tsp から oas を生成する"
-run = "npm run compile"
+[tasks."compile:all"]
+description = "oas を生成する"
+run = [{ tasks = ["compile:client", "compile:admin"] }]
 
-[tasks."compile:watch"]
-description = "tsp から oas を生成する(watch オプション付き)"
-run = "npm run compile:watch"
+[tasks."compile:client"]
+description = "クライアント向け oas を生成する"
+run = "bun run compile:client"
+
+[tasks."compile:client:watch"]
+description = "クライアント向け oas を生成する(watch)"
+run = "bun run compile:client:watch"
+
+[tasks."compile:admin"]
+description = "管理画面向け oas を生成する"
+run = "bun run compile:admin"
+
+[tasks."compile:admin:watch"]
+description = "管理画面向け oas を生成する(watch)"
+run = "bun run compile:admin:watch"
 
 [tasks.re-compile]
-description = "tsp から oas を生成し直す"
+description = "oas を生成し直す"
 run = '''
 rm -rf generated/oas
-npm run compile
+mise run compile:all
 '''
-
