@@ -19,19 +19,19 @@ run = [{ tasks = ["compile:client", "compile:admin"] }]
 
 [tasks."compile:client"]
 description = "クライアント向け oas を生成する"
-run = "npm run compile:client"
+run = "bun run compile:client"
 
 [tasks."compile:client:watch"]
 description = "クライアント向け oas を生成する(watch)"
-run = "npm run compile:client:watch"
+run = "bun run compile:client:watch"
 
 [tasks."compile:admin"]
 description = "管理画面向け oas を生成する"
-run = "npm run compile:admin"
+run = "bun run compile:admin"
 
 [tasks."compile:admin:watch"]
 description = "管理画面向け oas を生成する(watch)"
-run = "npm run compile:admin(watch)"
+run = "bun run compile:admin:watch"
 
 [tasks.re-compile]
 description = "oas を生成し直す"
