@@ -1021,9 +1021,9 @@ components:
         - description
         - songType
         - orderNo
-        - arrangers
-        - composers
         - lyricists
+        - composers
+        - arrangers
       properties:
         songId:
           $ref: '#/components/schemas/songId'
@@ -1035,18 +1035,18 @@ components:
           $ref: '#/components/schemas/SongType'
         orderNo:
           $ref: '#/components/schemas/orderNo'
-        arrangers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Arranger'
-        composers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Composer'
         lyricists:
           type: array
           items:
             $ref: '#/components/schemas/Lyricist'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Composer'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Arranger'
       examples:
         - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
           title: 描き続けた君へ
@@ -1055,7 +1055,7 @@ components:
             name: オリジナル曲
             value: 1
           orderNo: 1
-          arrangers:
+          lyricists:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
               name: ヰ世界情緒
               orderNo: 1
@@ -1063,7 +1063,7 @@ components:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
               name: ヰ世界情緒
               orderNo: 1
-          lyricists:
+          arrangers:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
               name: ヰ世界情緒
               orderNo: 1
@@ -1073,9 +1073,9 @@ components:
         - title
         - description
         - songTypeValue
-        - arrangers
-        - composers
         - lyricists
+        - composers
+        - arrangers
       properties:
         title:
           $ref: '#/components/schemas/title'
@@ -1083,18 +1083,18 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
-        arrangers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestArranger'
-        composers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestComposer'
         lyricists:
           type: array
           items:
             $ref: '#/components/schemas/RequestLyricist'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestComposer'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestArranger'
     SongCreateResponse:
       type: object
       required:
@@ -1170,9 +1170,9 @@ components:
         - description
         - songTypeValue
         - orderNo
-        - arrangers
-        - composers
         - lyricists
+        - composers
+        - arrangers
       properties:
         title:
           $ref: '#/components/schemas/title'
@@ -1182,18 +1182,18 @@ components:
           $ref: '#/components/schemas/SongTypeValue'
         orderNo:
           $ref: '#/components/schemas/orderNo'
-        arrangers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestArranger'
-        composers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestComposer'
         lyricists:
           type: array
           items:
             $ref: '#/components/schemas/RequestLyricist'
+        composers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestComposer'
+        arrangers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestArranger'
     SongUpdateResponse:
       type: object
       required:
