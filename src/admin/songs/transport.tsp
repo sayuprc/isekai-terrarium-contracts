@@ -12,9 +12,9 @@ model SongCreateRequest {
   title: title;
   description: description;
   songTypeValue: SongTypeValue;
-  arrangers: RequestArranger[];
-  composers: RequestComposer[];
   lyricists: RequestLyricist[];
+  composers: RequestComposer[];
+  arrangers: RequestArranger[];
 }
 
 model SongCreateResponse {
@@ -26,17 +26,17 @@ model SongUpdateRequest {
   description: description;
   songTypeValue: SongTypeValue;
   orderNo: orderNo;
-  arrangers: RequestArranger[];
-  composers: RequestComposer[];
   lyricists: RequestLyricist[];
+  composers: RequestComposer[];
+  arrangers: RequestArranger[];
 }
 
 model SongUpdateResponse {
   song: Song;
 }
 
-model RequestArranger is PickProperties<Arranger, "creatorId">;
+model RequestLyricist is PickProperties<Lyricist, "creatorId">;
 
 model RequestComposer is PickProperties<Composer, "creatorId">;
 
-model RequestLyricist is PickProperties<Lyricist, "creatorId">;
+model RequestArranger is PickProperties<Arranger, "creatorId">;
