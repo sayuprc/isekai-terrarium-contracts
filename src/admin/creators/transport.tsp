@@ -18,6 +18,7 @@ model CreatorCreateResponse {
 
 model CreatorUpdateRequest {
   name: creatorName;
+  orderNo: orderNo;
 }
 
 model CreatorUpdateResponse {

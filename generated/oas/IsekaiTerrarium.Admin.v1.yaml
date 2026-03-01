@@ -769,14 +769,18 @@ components:
       required:
         - creatorId
         - name
+        - orderNo
       properties:
         creatorId:
           $ref: '#/components/schemas/creatorId'
         name:
           $ref: '#/components/schemas/creatorName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           name: ヰ世界情緒
+          orderNo: 10
     CreatorCreateRequest:
       type: object
       required:
@@ -811,9 +815,12 @@ components:
       type: object
       required:
         - name
+        - orderNo
       properties:
         name:
           $ref: '#/components/schemas/creatorName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
     CreatorUpdateResponse:
       type: object
       required:
