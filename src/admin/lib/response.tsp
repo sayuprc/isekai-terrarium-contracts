@@ -35,6 +35,10 @@ model Unprocessable {
 }
 
 model ValidationError {
+  errors: ValidationErrorDetail[];
+}
+
+model ValidationErrorDetail {
   field: string;
   message: string;
 }
