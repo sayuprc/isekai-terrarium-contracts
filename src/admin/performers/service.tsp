@@ -44,5 +44,11 @@ interface PerformerService {
 
   @doc("共演者削除API")
   @delete
-  deletePerformer(@path performerId: uuid): NoContent | Unauthorized | Forbidden | Unprocessable | ServerError;
+  deletePerformer(@path performerId: uuid):
+    | NoContent
+    | BadRequest
+    | Unauthorized
+    | Forbidden
+    | Unprocessable
+    | ServerError;
 }

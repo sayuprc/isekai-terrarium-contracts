@@ -38,5 +38,5 @@ interface SongService {
 
   @doc("楽曲削除API")
   @delete
-  deleteSong(@path songId: uuid): NoContent | Unauthorized | Forbidden | Unprocessable | ServerError;
+  deleteSong(@path songId: uuid): NoContent | BadRequest | Unauthorized | Forbidden | Unprocessable | ServerError;
 }
