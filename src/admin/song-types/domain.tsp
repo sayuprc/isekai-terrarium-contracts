@@ -10,10 +10,6 @@ scalar songTypeName extends string;
 enum SongTypeValue {
   Original: 1,
   Cover: 2,
-  Collaboration: 3,
-  Lineage: 4,
-  Derivative: 5,
-  Amplified: 6,
 }
 
 @example(#{ name: "オリジナル曲", value: SongTypeValue.Original })

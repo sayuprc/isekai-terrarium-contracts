@@ -1158,10 +1158,6 @@ components:
       enum:
         - 1
         - 2
-        - 3
-        - 4
-        - 5
-        - 6
       description: 楽曲種別の値
     SongUpdateRequest:
       type: object
