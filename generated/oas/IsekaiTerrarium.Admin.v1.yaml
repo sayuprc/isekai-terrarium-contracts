@@ -1033,6 +1033,8 @@ components:
           $ref: '#/components/schemas/description'
         songType:
           $ref: '#/components/schemas/SongType'
+        attribute:
+          $ref: '#/components/schemas/SongAttribute'
         orderNo:
           $ref: '#/components/schemas/orderNo'
         lyricists:
@@ -1054,6 +1056,9 @@ components:
           songType:
             name: オリジナル曲
             value: 1
+          attribute:
+            name: コラボ
+            value: 1
           orderNo: 1
           lyricists:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
@@ -1067,6 +1072,28 @@ components:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
               name: ヰ世界情緒
               orderNo: 1
+    SongAttribute:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          $ref: '#/components/schemas/songAttributeName'
+        value:
+          $ref: '#/components/schemas/SongAttributeValue'
+      examples:
+        - name: コラボ
+          value: 1
+    SongAttributeValue:
+      type: number
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      description: 楽曲属性の値
     SongCreateRequest:
       type: object
       required:
@@ -1083,6 +1110,8 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
+        attributeValue:
+          $ref: '#/components/schemas/SongAttributeValue'
         lyricists:
           type: array
           items:
@@ -1176,6 +1205,8 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
+        attributeValue:
+          $ref: '#/components/schemas/SongAttributeValue'
         orderNo:
           $ref: '#/components/schemas/orderNo'
         lyricists:
@@ -1280,6 +1311,10 @@ components:
       type: string
       minLength: 1
       description: 役割名
+    songAttributeName:
+      type: string
+      minLength: 1
+      description: 楽曲属性名
     songId:
       type: string
       format: uuid

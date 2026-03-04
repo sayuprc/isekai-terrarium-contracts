@@ -12,6 +12,7 @@ model SongCreateRequest {
   title: title;
   description: description;
   songTypeValue: SongTypeValue;
+  attributeValue?: SongAttributeValue;
   lyricists: RequestLyricist[];
   composers: RequestComposer[];
   arrangers: RequestArranger[];
@@ -25,6 +26,7 @@ model SongUpdateRequest {
   title: title;
   description: description;
   songTypeValue: SongTypeValue;
+  attributeValue?: SongAttributeValue;
   orderNo: orderNo;
   lyricists: RequestLyricist[];
   composers: RequestComposer[];
