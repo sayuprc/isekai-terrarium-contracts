@@ -4,6 +4,7 @@ import "./admin-users";
 import "./auth";
 import "./creators";
 import "./performers";
+import "./song-attributes";
 import "./song-types";
 import "./songs";
 
