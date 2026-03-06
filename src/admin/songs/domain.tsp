@@ -20,6 +20,7 @@ scalar description extends string;
   title: "描き続けた君へ",
   description: "オリジナル楽曲",
   songType: #{ name: "オリジナル曲", value: SongTypeValue.Original },
+  attribute: #{ name: "コラボ", value: SongAttributeValue.Collaboration },
   orderNo: 1,
   lyricists: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
   composers: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
@@ -30,10 +31,30 @@ model Song {
   title: title;
   description: description;
   songType: SongType;
+  attribute?: SongAttribute;
   orderNo: orderNo;
   lyricists: Lyricist[];
   composers: Composer[];
   arrangers: Arranger[];
+}
+
+@doc("楽曲属性名")
+@minLength(1)
+scalar songAttributeName extends string;
+
+@doc("楽曲属性の値")
+enum SongAttributeValue {
+  Collaboration: 1,
+  Lineage: 2,
+  Derivative: 3,
+  Amplified: 4,
+  Isotope: 5,
+}
+
+@example(#{ name: "コラボ", value: SongAttributeValue.Collaboration })
+model SongAttribute {
+  name: songAttributeName;
+  value: SongAttributeValue;
 }
 
 model SongCreator {

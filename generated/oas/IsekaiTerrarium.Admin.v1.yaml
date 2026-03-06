@@ -9,6 +9,7 @@ tags:
   - name: Performer
   - name: SongType
   - name: Song
+  - name: SongAttribute
 paths:
   /admin-users:
     get:
@@ -482,6 +483,32 @@ paths:
           description: Server error
       tags:
         - Performer
+      security:
+        - BearerAuth: []
+  /song-attributes:
+    get:
+      operationId: SongAttributeService_listSongAttributes
+      description: 楽曲属性一覧取得API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongAttributeListResponse'
+        '401':
+          description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - SongAttribute
       security:
         - BearerAuth: []
   /song-types:
@@ -1033,6 +1060,8 @@ components:
           $ref: '#/components/schemas/description'
         songType:
           $ref: '#/components/schemas/SongType'
+        attribute:
+          $ref: '#/components/schemas/SongAttribute'
         orderNo:
           $ref: '#/components/schemas/orderNo'
         lyricists:
@@ -1054,6 +1083,9 @@ components:
           songType:
             name: オリジナル曲
             value: 1
+          attribute:
+            name: コラボ
+            value: 1
           orderNo: 1
           lyricists:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
@@ -1067,6 +1099,37 @@ components:
             - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
               name: ヰ世界情緒
               orderNo: 1
+    SongAttribute:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          $ref: '#/components/schemas/songAttributeName'
+        value:
+          $ref: '#/components/schemas/SongAttributeValue'
+      examples:
+        - name: コラボ
+          value: 1
+    SongAttributeListResponse:
+      type: object
+      required:
+        - attributes
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SongAttribute'
+    SongAttributeValue:
+      type: number
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      description: 楽曲属性の値
     SongCreateRequest:
       type: object
       required:
@@ -1083,6 +1146,8 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
+        attributeValue:
+          $ref: '#/components/schemas/SongAttributeValue'
         lyricists:
           type: array
           items:
@@ -1158,10 +1223,6 @@ components:
       enum:
         - 1
         - 2
-        - 3
-        - 4
-        - 5
-        - 6
       description: 楽曲種別の値
     SongUpdateRequest:
       type: object
@@ -1180,6 +1241,8 @@ components:
           $ref: '#/components/schemas/description'
         songTypeValue:
           $ref: '#/components/schemas/SongTypeValue'
+        attributeValue:
+          $ref: '#/components/schemas/SongAttributeValue'
         orderNo:
           $ref: '#/components/schemas/orderNo'
         lyricists:
@@ -1284,6 +1347,10 @@ components:
       type: string
       minLength: 1
       description: 役割名
+    songAttributeName:
+      type: string
+      minLength: 1
+      description: 楽曲属性名
     songId:
       type: string
       format: uuid
