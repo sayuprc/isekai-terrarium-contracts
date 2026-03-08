@@ -6,12 +6,28 @@ using Http;
 
 namespace IsekaiTerrarium.Admin;
 
+@doc("共演者検索のソート条件")
+enum PerformerSearchSortBy {
+  name: "name",
+  orderNo: "order_no",
+}
+
 @tag("Performer")
 @route("/performers")
 @useAuth(BearerAuth)
 interface PerformerService {
   @doc("共演者一覧取得API")
   listPerformers(): Ok<PerformerListResponse> | Unauthorized | Forbidden | ServerError;
+
+  @doc("共演者検索API")
+  @route("/search")
+  searchPerformers(
+    @query name?: string,
+    @query sort?: PerformerSearchSortBy = PerformerSearchSortBy.orderNo,
+    @query order?: SortOrder = SortOrder.asc,
+    @query page?: int32 = 1,
+    @query("per_page") perPage?: int32 = 50,
+  ): Ok<PerformerSearchResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("共演者取得API")
   getPerformer(@path performerId: uuid):

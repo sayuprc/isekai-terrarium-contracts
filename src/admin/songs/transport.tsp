@@ -4,6 +4,11 @@ model SongListResponse {
   songs: Song[];
 }
 
+model SongSearchResponse {
+  songs: Song[];
+  maxPage: int32;
+}
+
 model SongGetResponse {
   song: Song;
 }
