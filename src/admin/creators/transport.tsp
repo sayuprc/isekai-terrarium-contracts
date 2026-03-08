@@ -4,6 +4,11 @@ model CreatorListResponse {
   creators: Creator[];
 }
 
+model CreatorSearchResponse {
+  creators: Creator[];
+  maxPage: int32;
+}
+
 model CreatorGetResponse {
   creator: Creator;
 }
