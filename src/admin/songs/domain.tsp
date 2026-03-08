@@ -1,5 +1,4 @@
 import "../lib";
-import "../song-types";
 import "../creators";
 
 namespace IsekaiTerrarium.Admin;
@@ -19,7 +18,7 @@ scalar description extends string;
   songId: "3cd42c09-ff3c-4cd2-913f-a279c4ea89b4",
   title: "描き続けた君へ",
   description: "オリジナル楽曲",
-  songType: #{ name: "オリジナル曲", value: SongTypeValue.Original },
+  type: #{ name: "オリジナル曲", value: SongTypeValue.Original },
   attribute: #{ name: "コラボ", value: SongAttributeValue.Collaboration },
   orderNo: 1,
   lyricists: #[#{ creatorId: "a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd", name: "ヰ世界情緒", orderNo: 1 }],
@@ -30,12 +29,28 @@ model Song {
   songId: songId;
   title: title;
   description: description;
-  songType: SongType;
+  type: SongType;
   attribute?: SongAttribute;
   orderNo: orderNo;
   lyricists: Lyricist[];
   composers: Composer[];
   arrangers: Arranger[];
+}
+
+@doc("楽曲種別名")
+@minLength(1)
+scalar songTypeName extends string;
+
+@doc("楽曲種別の値")
+enum SongTypeValue {
+  Original: 1,
+  Cover: 2,
+}
+
+@example(#{ name: "オリジナル曲", value: SongTypeValue.Original })
+model SongType {
+  name: songTypeName;
+  value: SongTypeValue;
 }
 
 @doc("楽曲属性名")

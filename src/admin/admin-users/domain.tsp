@@ -60,7 +60,6 @@ enum PermissionValue {
   WritePerformer: "write_performer",
   ReadSong: "read_song",
   WriteSong: "write_song",
-  ReadSongType: "read_song_type",
 }
 
 @example(#{ name: "管理ユーザー読み取り", value: PermissionValue.ReadAdminUser })
