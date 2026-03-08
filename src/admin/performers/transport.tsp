@@ -4,6 +4,11 @@ model PerformerListResponse {
   performers: Performer[];
 }
 
+model PerformerSearchResponse {
+  performers: Performer[];
+  maxPage: int32;
+}
+
 model PerformerGetResponse {
   performer: Performer;
 }
