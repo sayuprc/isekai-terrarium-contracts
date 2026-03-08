@@ -6,12 +6,30 @@ using Http;
 
 namespace IsekaiTerrarium.Admin;
 
+@doc("楽曲検索のソート条件")
+enum SongSearchSortBy {
+  title: "title",
+  orderNo: "order_no",
+}
+
 @tag("Song")
 @route("/songs")
 @useAuth(BearerAuth)
 interface SongService {
   @doc("楽曲一覧取得API")
   listSongs(): Ok<SongListResponse> | Unauthorized | Forbidden | ServerError;
+
+  @doc("楽曲検索API")
+  @route("/search")
+  searchSongs(
+    @query title?: string,
+    @query type?: int32,
+    @query attribute?: int32,
+    @query sort?: SongSearchSortBy = SongSearchSortBy.orderNo,
+    @query order?: SortOrder = SortOrder.asc,
+    @query page?: int32 = 1,
+    @query("per_page") perPage?: int32 = 50,
+  ): Ok<SongSearchResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("楽曲取得API")
   getSong(@path songId: uuid): Ok<SongGetResponse> | Unauthorized | Forbidden | NotFound | Unprocessable | ServerError;
