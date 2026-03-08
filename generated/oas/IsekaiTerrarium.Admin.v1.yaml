@@ -7,9 +7,9 @@ tags:
   - name: Authenticate
   - name: Creator
   - name: Performer
-  - name: SongType
   - name: Song
   - name: SongAttribute
+  - name: SongType
 paths:
   /admin-users:
     get:
@@ -994,7 +994,6 @@ components:
         - write_performer
         - read_song
         - write_song
-        - read_song_type
       description: 権限の値
     RequestArranger:
       type: object
@@ -1046,7 +1045,7 @@ components:
         - songId
         - title
         - description
-        - songType
+        - type
         - orderNo
         - lyricists
         - composers
@@ -1058,7 +1057,7 @@ components:
           $ref: '#/components/schemas/title'
         description:
           $ref: '#/components/schemas/description'
-        songType:
+        type:
           $ref: '#/components/schemas/SongType'
         attribute:
           $ref: '#/components/schemas/SongAttribute'
@@ -1080,7 +1079,7 @@ components:
         - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
           title: 描き続けた君へ
           description: オリジナル楽曲
-          songType:
+          type:
             name: オリジナル曲
             value: 1
           attribute:
@@ -1135,7 +1134,7 @@ components:
       required:
         - title
         - description
-        - songTypeValue
+        - typeValue
         - lyricists
         - composers
         - arrangers
@@ -1144,7 +1143,7 @@ components:
           $ref: '#/components/schemas/title'
         description:
           $ref: '#/components/schemas/description'
-        songTypeValue:
+        typeValue:
           $ref: '#/components/schemas/SongTypeValue'
         attributeValue:
           $ref: '#/components/schemas/SongAttributeValue'
@@ -1212,9 +1211,9 @@ components:
     SongTypeListResponse:
       type: object
       required:
-        - songTypes
+        - types
       properties:
-        songTypes:
+        types:
           type: array
           items:
             $ref: '#/components/schemas/SongType'
@@ -1229,7 +1228,7 @@ components:
       required:
         - title
         - description
-        - songTypeValue
+        - typeValue
         - orderNo
         - lyricists
         - composers
@@ -1239,7 +1238,7 @@ components:
           $ref: '#/components/schemas/title'
         description:
           $ref: '#/components/schemas/description'
-        songTypeValue:
+        typeValue:
           $ref: '#/components/schemas/SongTypeValue'
         attributeValue:
           $ref: '#/components/schemas/SongAttributeValue'

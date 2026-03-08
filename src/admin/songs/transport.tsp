@@ -11,7 +11,7 @@ model SongGetResponse {
 model SongCreateRequest {
   title: title;
   description: description;
-  songTypeValue: SongTypeValue;
+  typeValue: SongTypeValue;
   attributeValue?: SongAttributeValue;
   lyricists: RequestLyricist[];
   composers: RequestComposer[];
@@ -25,7 +25,7 @@ model SongCreateResponse {
 model SongUpdateRequest {
   title: title;
   description: description;
-  songTypeValue: SongTypeValue;
+  typeValue: SongTypeValue;
   attributeValue?: SongAttributeValue;
   orderNo: orderNo;
   lyricists: RequestLyricist[];
