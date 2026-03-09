@@ -1574,7 +1574,6 @@ components:
       description: クリエイター名
     description:
       type: string
-      minLength: 1
       description: 楽曲の説明
     email:
       type: string

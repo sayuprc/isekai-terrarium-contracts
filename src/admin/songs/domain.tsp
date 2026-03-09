@@ -11,7 +11,6 @@ scalar songId extends uuid;
 scalar title extends string;
 
 @doc("楽曲の説明")
-@minLength(1)
 scalar description extends string;
 
 @example(#{
