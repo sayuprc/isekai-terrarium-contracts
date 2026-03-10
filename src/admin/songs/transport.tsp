@@ -1,9 +1,5 @@
 namespace IsekaiTerrarium.Admin;
 
-model SongListResponse {
-  songs: Song[];
-}
-
 model SongSearchResponse {
   songs: SongSummary[];
   maxPage: int32;
