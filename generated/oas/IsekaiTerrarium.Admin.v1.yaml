@@ -1442,7 +1442,7 @@ components:
         songs:
           type: array
           items:
-            $ref: '#/components/schemas/Song'
+            $ref: '#/components/schemas/SongSummary'
         maxPage:
           type: integer
           format: int32
@@ -1452,6 +1452,34 @@ components:
         - title
         - order_no
       description: 楽曲検索のソート条件
+    SongSummary:
+      type: object
+      required:
+        - songId
+        - title
+        - type
+        - orderNo
+      properties:
+        songId:
+          $ref: '#/components/schemas/songId'
+        title:
+          $ref: '#/components/schemas/title'
+        type:
+          $ref: '#/components/schemas/SongType'
+        attribute:
+          $ref: '#/components/schemas/SongAttribute'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      examples:
+        - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
+          title: 描き続けた君へ
+          type:
+            name: オリジナル曲
+            value: 1
+          attribute:
+            name: コラボ
+            value: 1
+          orderNo: 1
     SongType:
       type: object
       required:
