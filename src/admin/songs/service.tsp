@@ -16,9 +16,6 @@ enum SongSearchSortBy {
 @route("/songs")
 @useAuth(BearerAuth)
 interface SongService {
-  @doc("楽曲一覧取得API")
-  listSongs(): Ok<SongListResponse> | Unauthorized | Forbidden | ServerError;
-
   @doc("楽曲検索API")
   @route("/search")
   searchSongs(

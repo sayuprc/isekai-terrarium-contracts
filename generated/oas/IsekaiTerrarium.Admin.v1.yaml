@@ -662,31 +662,6 @@ paths:
       security:
         - BearerAuth: []
   /songs:
-    get:
-      operationId: SongService_listSongs
-      description: 楽曲一覧取得API
-      parameters: []
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongListResponse'
-        '401':
-          description: Access is unauthorized.
-        '403':
-          description: Access is forbidden.
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - Song
-      security:
-        - BearerAuth: []
     post:
       operationId: SongService_createSong
       description: 楽曲作成API
@@ -1424,15 +1399,6 @@ components:
       properties:
         song:
           $ref: '#/components/schemas/Song'
-    SongListResponse:
-      type: object
-      required:
-        - songs
-      properties:
-        songs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Song'
     SongSearchResponse:
       type: object
       required:
