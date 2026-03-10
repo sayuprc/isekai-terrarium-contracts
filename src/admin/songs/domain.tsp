@@ -71,6 +71,21 @@ model SongAttribute {
   value: SongAttributeValue;
 }
 
+@example(#{
+  songId: "3cd42c09-ff3c-4cd2-913f-a279c4ea89b4",
+  title: "描き続けた君へ",
+  type: #{ name: "オリジナル曲", value: SongTypeValue.Original },
+  attribute: #{ name: "コラボ", value: SongAttributeValue.Collaboration },
+  orderNo: 1,
+})
+model SongSummary {
+  songId: songId;
+  title: title;
+  type: SongType;
+  attribute?: SongAttribute;
+  orderNo: orderNo;
+}
+
 model SongCreator {
   creatorId: creatorId;
   name: creatorName;

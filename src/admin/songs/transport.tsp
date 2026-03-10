@@ -5,7 +5,7 @@ model SongListResponse {
 }
 
 model SongSearchResponse {
-  songs: Song[];
+  songs: SongSummary[];
   maxPage: int32;
 }
 
