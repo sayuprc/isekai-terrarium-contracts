@@ -8,8 +8,6 @@ tags:
   - name: Creator
   - name: Performer
   - name: Song
-  - name: SongAttribute
-  - name: SongType
 paths:
   /admin-users:
     get:
@@ -607,58 +605,6 @@ paths:
           description: Server error
       tags:
         - Performer
-      security:
-        - BearerAuth: []
-  /song-attributes:
-    get:
-      operationId: SongAttributeService_listSongAttributes
-      description: 楽曲属性一覧取得API
-      parameters: []
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongAttributeListResponse'
-        '401':
-          description: Access is unauthorized.
-        '403':
-          description: Access is forbidden.
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongAttribute
-      security:
-        - BearerAuth: []
-  /song-types:
-    get:
-      operationId: SongTypeService_listSongTypes
-      description: 楽曲種別一覧取得API
-      parameters: []
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SongTypeListResponse'
-        '401':
-          description: Access is unauthorized.
-        '403':
-          description: Access is forbidden.
-        '500':
-          description: Server error
-        '503':
-          description: Service unavailable.
-        '504':
-          description: Server error
-      tags:
-        - SongType
       security:
         - BearerAuth: []
   /songs:
@@ -1324,15 +1270,6 @@ components:
       examples:
         - name: コラボ
           value: 1
-    SongAttributeListResponse:
-      type: object
-      required:
-        - attributes
-      properties:
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/SongAttribute'
     SongAttributeValue:
       type: number
       enum:
@@ -1459,15 +1396,6 @@ components:
       examples:
         - name: オリジナル曲
           value: 1
-    SongTypeListResponse:
-      type: object
-      required:
-        - types
-      properties:
-        types:
-          type: array
-          items:
-            $ref: '#/components/schemas/SongType'
     SongTypeValue:
       type: number
       enum:
