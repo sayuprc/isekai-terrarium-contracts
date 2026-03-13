@@ -20,12 +20,12 @@ interface SongService {
   @route("/search")
   searchSongs(
     @query title?: string,
-    @query type?: int32,
-    @query attribute?: int32,
+    @query type?: SongTypeValue,
+    @query attribute?: SongAttributeValue,
     @query sort?: SongSearchSortBy = SongSearchSortBy.orderNo,
     @query order?: SortOrder = SortOrder.asc,
     @query page?: int32 = 1,
-    @query("per_page") perPage?: int32 = 50,
+    @query("per_page") perPage?: PerPage = PerPage.fifty,
   ): Ok<SongSearchResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("楽曲取得API")
