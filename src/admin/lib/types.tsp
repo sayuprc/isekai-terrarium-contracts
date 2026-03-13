@@ -15,3 +15,10 @@ enum SortOrder {
   asc: "asc",
   desc: "desc",
 }
+
+@doc("1ページあたりの件数")
+enum PerPage {
+  twentyFive: 25,
+  fifty: 50,
+  oneHundred: 100,
+}

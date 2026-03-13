@@ -26,7 +26,7 @@ interface CreatorService {
     @query sort?: CreatorSearchSortBy = CreatorSearchSortBy.orderNo,
     @query order?: SortOrder = SortOrder.asc,
     @query page?: int32 = 1,
-    @query("per_page") perPage?: int32 = 50,
+    @query("per_page") perPage?: PerPage = PerPage.fifty,
   ): Ok<CreatorSearchResponse> | Unauthorized | Forbidden | ServerError;
 
   @doc("クリエイター取得API")

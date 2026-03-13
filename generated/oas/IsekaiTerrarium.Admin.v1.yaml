@@ -183,8 +183,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/PerPage'
             default: 50
           explode: false
       responses:
@@ -449,8 +448,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/PerPage'
             default: 50
           explode: false
       responses:
@@ -720,15 +718,13 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/SongTypeValue'
           explode: false
         - name: attribute
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/SongAttributeValue'
           explode: false
         - name: sort
           in: query
@@ -756,8 +752,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/PerPage'
             default: 50
           explode: false
       responses:
@@ -1100,6 +1095,14 @@ components:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           name: ヰ世界情緒
           orderNo: 1
+    PerPage:
+      type: integer
+      format: int32
+      enum:
+        - 25
+        - 50
+        - 100
+      description: 1ページあたりの件数
     Performer:
       type: object
       required:
