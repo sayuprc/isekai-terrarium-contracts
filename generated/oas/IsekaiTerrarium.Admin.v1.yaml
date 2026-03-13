@@ -17,21 +17,21 @@ paths:
       description: 管理ユーザー一覧取得API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdminUserListResponse'
-        '401':
+                $ref: "#/components/schemas/AdminUserListResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - AdminUser
@@ -43,31 +43,31 @@ paths:
       description: 認証API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginResponse'
-        '400':
+                $ref: "#/components/schemas/LoginResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Authenticate
@@ -76,28 +76,28 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginRequest'
+              $ref: "#/components/schemas/LoginRequest"
   /creators:
     get:
       operationId: CreatorService_listCreators
       description: クリエイター一覧取得API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatorListResponse'
-        '401':
+                $ref: "#/components/schemas/CreatorListResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -108,33 +108,33 @@ paths:
       description: クリエイター作成API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatorCreateResponse'
-        '400':
+                $ref: "#/components/schemas/CreatorCreateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -143,7 +143,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatorCreateRequest'
+              $ref: "#/components/schemas/CreatorCreateRequest"
       security:
         - BearerAuth: []
   /creators/search:
@@ -161,14 +161,14 @@ paths:
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/CreatorSearchSortBy'
+            $ref: "#/components/schemas/CreatorSearchSortBy"
             default: order_no
           explode: false
         - name: order
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/SortOrder'
+            $ref: "#/components/schemas/SortOrder"
             default: asc
           explode: false
         - name: page
@@ -188,21 +188,21 @@ paths:
             default: 50
           explode: false
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatorSearchResponse'
-        '401':
+                $ref: "#/components/schemas/CreatorSearchResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -217,35 +217,35 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatorGetResponse'
-        '401':
+                $ref: "#/components/schemas/CreatorGetResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -259,41 +259,41 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatorUpdateResponse'
-        '400':
+                $ref: "#/components/schemas/CreatorUpdateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -302,7 +302,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatorUpdateRequest'
+              $ref: "#/components/schemas/CreatorUpdateRequest"
       security:
         - BearerAuth: []
     delete:
@@ -313,31 +313,32 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '204':
-          description: 'There is no content to send for this request, but the headers may be useful. '
-        '400':
+        "204":
+          description: "There is no content to send for this request, but the headers may
+            be useful. "
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Creator
@@ -349,21 +350,21 @@ paths:
       description: 共演者一覧取得API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerformerListResponse'
-        '401':
+                $ref: "#/components/schemas/PerformerListResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -374,33 +375,33 @@ paths:
       description: 共演者作成API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerformerCreateResponse'
-        '400':
+                $ref: "#/components/schemas/PerformerCreateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -409,7 +410,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PerformerCreateRequest'
+              $ref: "#/components/schemas/PerformerCreateRequest"
       security:
         - BearerAuth: []
   /performers/search:
@@ -427,14 +428,14 @@ paths:
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/PerformerSearchSortBy'
+            $ref: "#/components/schemas/PerformerSearchSortBy"
             default: order_no
           explode: false
         - name: order
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/SortOrder'
+            $ref: "#/components/schemas/SortOrder"
             default: asc
           explode: false
         - name: page
@@ -454,21 +455,21 @@ paths:
             default: 50
           explode: false
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerformerSearchResponse'
-        '401':
+                $ref: "#/components/schemas/PerformerSearchResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -483,35 +484,35 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerformerGetResponse'
-        '401':
+                $ref: "#/components/schemas/PerformerGetResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -525,41 +526,41 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerformerUpdateResponse'
-        '400':
+                $ref: "#/components/schemas/PerformerUpdateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -568,7 +569,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PerformerUpdateRequest'
+              $ref: "#/components/schemas/PerformerUpdateRequest"
       security:
         - BearerAuth: []
     delete:
@@ -579,31 +580,32 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '204':
-          description: 'There is no content to send for this request, but the headers may be useful. '
-        '400':
+        "204":
+          description: "There is no content to send for this request, but the headers may
+            be useful. "
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Performer
@@ -615,21 +617,21 @@ paths:
       description: 楽曲属性一覧取得API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongAttributeListResponse'
-        '401':
+                $ref: "#/components/schemas/SongAttributeListResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - SongAttribute
@@ -641,59 +643,84 @@ paths:
       description: 楽曲種別一覧取得API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongTypeListResponse'
-        '401':
+                $ref: "#/components/schemas/SongTypeListResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - SongType
       security:
         - BearerAuth: []
   /songs:
+    get:
+      operationId: SongService_listSongs
+      description: 楽曲一覧取得API
+      parameters: []
+      responses:
+        "200":
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SongListResponse"
+        "401":
+          description: Access is unauthorized.
+        "403":
+          description: Access is forbidden.
+        "500":
+          description: Server error
+        "503":
+          description: Service unavailable.
+        "504":
+          description: Server error
+      tags:
+        - Song
+      security:
+        - BearerAuth: []
     post:
       operationId: SongService_createSong
       description: 楽曲作成API
       parameters: []
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongCreateResponse'
-        '400':
+                $ref: "#/components/schemas/SongCreateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Song
@@ -702,7 +729,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SongCreateRequest'
+              $ref: "#/components/schemas/SongCreateRequest"
       security:
         - BearerAuth: []
   /songs/search:
@@ -720,28 +747,26 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: "#/components/schemas/SongTypeValue"
           explode: false
         - name: attribute
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: "#/components/schemas/SongAttributeValue"
           explode: false
         - name: sort
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/SongSearchSortBy'
+            $ref: "#/components/schemas/SongSearchSortBy"
             default: order_no
           explode: false
         - name: order
           in: query
           required: false
           schema:
-            $ref: '#/components/schemas/SortOrder'
+            $ref: "#/components/schemas/SortOrder"
             default: asc
           explode: false
         - name: page
@@ -761,21 +786,21 @@ paths:
             default: 50
           explode: false
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongSearchResponse'
-        '401':
+                $ref: "#/components/schemas/SongSearchResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '500':
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Song
@@ -790,35 +815,35 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongGetResponse'
-        '401':
+                $ref: "#/components/schemas/SongGetResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Song
@@ -832,41 +857,41 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '200':
+        "200":
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SongUpdateResponse'
-        '400':
+                $ref: "#/components/schemas/SongUpdateResponse"
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '404':
+        "404":
           description: The server cannot find the requested resource.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '422':
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Song
@@ -875,7 +900,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SongUpdateRequest'
+              $ref: "#/components/schemas/SongUpdateRequest"
       security:
         - BearerAuth: []
     delete:
@@ -886,31 +911,32 @@ paths:
           in: path
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
+            $ref: "#/components/schemas/uuid"
       responses:
-        '204':
-          description: 'There is no content to send for this request, but the headers may be useful. '
-        '400':
+        "204":
+          description: "There is no content to send for this request, but the headers may
+            be useful. "
+        "400":
           description: The server could not understand the request due to invalid syntax.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
           description: Access is unauthorized.
-        '403':
+        "403":
           description: Access is forbidden.
-        '422':
+        "422":
           description: Client error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValidationError'
-        '500':
+                $ref: "#/components/schemas/ValidationError"
+        "500":
           description: Server error
-        '503':
+        "503":
           description: Service unavailable.
-        '504':
+        "504":
           description: Server error
       tags:
         - Song
@@ -929,24 +955,24 @@ components:
         - permissions
       properties:
         adminUserId:
-          $ref: '#/components/schemas/adminUserId'
+          $ref: "#/components/schemas/adminUserId"
         name:
-          $ref: '#/components/schemas/adminUserName'
+          $ref: "#/components/schemas/adminUserName"
         email:
-          $ref: '#/components/schemas/email'
+          $ref: "#/components/schemas/email"
         createdAt:
-          $ref: '#/components/schemas/createdAt'
+          $ref: "#/components/schemas/createdAt"
         role:
-          $ref: '#/components/schemas/Role'
+          $ref: "#/components/schemas/Role"
         permissions:
           type: array
           items:
-            $ref: '#/components/schemas/Permission'
+            $ref: "#/components/schemas/Permission"
       examples:
         - adminUserId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           name: 管理ユーザー名
           email: example@example.com
-          createdAt: '2019-12-09T10:30:20+09:00'
+          createdAt: 2019-12-09T10:30:20+09:00
           role:
             name: 一般
             value: 3
@@ -961,11 +987,11 @@ components:
         adminUsers:
           type: array
           items:
-            $ref: '#/components/schemas/AdminUser'
+            $ref: "#/components/schemas/AdminUser"
     Arranger:
       type: object
       allOf:
-        - $ref: '#/components/schemas/SongCreator'
+        - $ref: "#/components/schemas/SongCreator"
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           name: ヰ世界情緒
@@ -973,7 +999,7 @@ components:
     Composer:
       type: object
       allOf:
-        - $ref: '#/components/schemas/SongCreator'
+        - $ref: "#/components/schemas/SongCreator"
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           name: ヰ世界情緒
@@ -986,11 +1012,11 @@ components:
         - orderNo
       properties:
         creatorId:
-          $ref: '#/components/schemas/creatorId'
+          $ref: "#/components/schemas/creatorId"
         name:
-          $ref: '#/components/schemas/creatorName'
+          $ref: "#/components/schemas/creatorName"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
       examples:
         - creatorId: 0cc5f492-22fe-4f38-b702-8b2375bc0254
           name: ヰ世界情緒
@@ -1001,21 +1027,21 @@ components:
         - name
       properties:
         name:
-          $ref: '#/components/schemas/creatorName'
+          $ref: "#/components/schemas/creatorName"
     CreatorCreateResponse:
       type: object
       required:
         - creator
       properties:
         creator:
-          $ref: '#/components/schemas/Creator'
+          $ref: "#/components/schemas/Creator"
     CreatorGetResponse:
       type: object
       required:
         - creator
       properties:
         creator:
-          $ref: '#/components/schemas/Creator'
+          $ref: "#/components/schemas/Creator"
     CreatorListResponse:
       type: object
       required:
@@ -1024,7 +1050,7 @@ components:
         creators:
           type: array
           items:
-            $ref: '#/components/schemas/Creator'
+            $ref: "#/components/schemas/Creator"
     CreatorSearchResponse:
       type: object
       required:
@@ -1034,7 +1060,7 @@ components:
         creators:
           type: array
           items:
-            $ref: '#/components/schemas/Creator'
+            $ref: "#/components/schemas/Creator"
         maxPage:
           type: integer
           format: int32
@@ -1051,16 +1077,16 @@ components:
         - orderNo
       properties:
         name:
-          $ref: '#/components/schemas/creatorName'
+          $ref: "#/components/schemas/creatorName"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
     CreatorUpdateResponse:
       type: object
       required:
         - creator
       properties:
         creator:
-          $ref: '#/components/schemas/Creator'
+          $ref: "#/components/schemas/Creator"
     ErrorResponse:
       type: object
       required:
@@ -1079,9 +1105,9 @@ components:
         - password
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: "#/components/schemas/email"
         password:
-          $ref: '#/components/schemas/password'
+          $ref: "#/components/schemas/password"
     LoginResponse:
       type: object
       required:
@@ -1089,13 +1115,13 @@ components:
         - refreshToken
       properties:
         accessToken:
-          $ref: '#/components/schemas/accessToken'
+          $ref: "#/components/schemas/accessToken"
         refreshToken:
-          $ref: '#/components/schemas/refreshToken'
+          $ref: "#/components/schemas/refreshToken"
     Lyricist:
       type: object
       allOf:
-        - $ref: '#/components/schemas/SongCreator'
+        - $ref: "#/components/schemas/SongCreator"
       examples:
         - creatorId: a4d01e9d-e593-4bd9-ba83-e9a7dd3887cd
           name: ヰ世界情緒
@@ -1108,11 +1134,11 @@ components:
         - orderNo
       properties:
         performerId:
-          $ref: '#/components/schemas/performerId'
+          $ref: "#/components/schemas/performerId"
         name:
-          $ref: '#/components/schemas/performerName'
+          $ref: "#/components/schemas/performerName"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
       examples:
         - performerId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
           name: ヰ世界情緒
@@ -1123,21 +1149,21 @@ components:
         - name
       properties:
         name:
-          $ref: '#/components/schemas/performerName'
+          $ref: "#/components/schemas/performerName"
     PerformerCreateResponse:
       type: object
       required:
         - performer
       properties:
         performer:
-          $ref: '#/components/schemas/Performer'
+          $ref: "#/components/schemas/Performer"
     PerformerGetResponse:
       type: object
       required:
         - performer
       properties:
         performer:
-          $ref: '#/components/schemas/Performer'
+          $ref: "#/components/schemas/Performer"
     PerformerListResponse:
       type: object
       required:
@@ -1146,7 +1172,7 @@ components:
         performers:
           type: array
           items:
-            $ref: '#/components/schemas/Performer'
+            $ref: "#/components/schemas/Performer"
     PerformerSearchResponse:
       type: object
       required:
@@ -1156,7 +1182,7 @@ components:
         performers:
           type: array
           items:
-            $ref: '#/components/schemas/Performer'
+            $ref: "#/components/schemas/Performer"
         maxPage:
           type: integer
           format: int32
@@ -1173,16 +1199,16 @@ components:
         - orderNo
       properties:
         name:
-          $ref: '#/components/schemas/performerName'
+          $ref: "#/components/schemas/performerName"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
     PerformerUpdateResponse:
       type: object
       required:
         - performer
       properties:
         performer:
-          $ref: '#/components/schemas/Performer'
+          $ref: "#/components/schemas/Performer"
     Permission:
       type: object
       required:
@@ -1190,9 +1216,9 @@ components:
         - value
       properties:
         name:
-          $ref: '#/components/schemas/permissionName'
+          $ref: "#/components/schemas/permissionName"
         value:
-          $ref: '#/components/schemas/PermissionValue'
+          $ref: "#/components/schemas/PermissionValue"
       examples:
         - name: 管理ユーザー読み取り
           value: read_admin_user
@@ -1214,7 +1240,7 @@ components:
         - creatorId
       properties:
         creatorId:
-          $ref: '#/components/schemas/creatorId'
+          $ref: "#/components/schemas/creatorId"
       description: The template for picking properties.
     RequestComposer:
       type: object
@@ -1222,7 +1248,7 @@ components:
         - creatorId
       properties:
         creatorId:
-          $ref: '#/components/schemas/creatorId'
+          $ref: "#/components/schemas/creatorId"
       description: The template for picking properties.
     RequestLyricist:
       type: object
@@ -1230,7 +1256,7 @@ components:
         - creatorId
       properties:
         creatorId:
-          $ref: '#/components/schemas/creatorId'
+          $ref: "#/components/schemas/creatorId"
       description: The template for picking properties.
     Role:
       type: object
@@ -1239,19 +1265,20 @@ components:
         - value
       properties:
         name:
-          $ref: '#/components/schemas/roleName'
+          $ref: "#/components/schemas/roleName"
         value:
-          $ref: '#/components/schemas/RoleValue'
+          $ref: "#/components/schemas/RoleValue"
       examples:
         - name: 特権
           value: 1
     RoleValue:
-      type: number
+      type: integer
       enum:
         - 1
         - 2
         - 3
       description: 役割の値
+      format: int32
     Song:
       type: object
       required:
@@ -1265,29 +1292,29 @@ components:
         - arrangers
       properties:
         songId:
-          $ref: '#/components/schemas/songId'
+          $ref: "#/components/schemas/songId"
         title:
-          $ref: '#/components/schemas/title'
+          $ref: "#/components/schemas/title"
         description:
-          $ref: '#/components/schemas/description'
+          $ref: "#/components/schemas/description"
         type:
-          $ref: '#/components/schemas/SongType'
+          $ref: "#/components/schemas/SongType"
         attribute:
-          $ref: '#/components/schemas/SongAttribute'
+          $ref: "#/components/schemas/SongAttribute"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
         lyricists:
           type: array
           items:
-            $ref: '#/components/schemas/Lyricist'
+            $ref: "#/components/schemas/Lyricist"
         composers:
           type: array
           items:
-            $ref: '#/components/schemas/Composer'
+            $ref: "#/components/schemas/Composer"
         arrangers:
           type: array
           items:
-            $ref: '#/components/schemas/Arranger'
+            $ref: "#/components/schemas/Arranger"
       examples:
         - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
           title: 描き続けた君へ
@@ -1318,9 +1345,9 @@ components:
         - value
       properties:
         name:
-          $ref: '#/components/schemas/songAttributeName'
+          $ref: "#/components/schemas/songAttributeName"
         value:
-          $ref: '#/components/schemas/SongAttributeValue'
+          $ref: "#/components/schemas/SongAttributeValue"
       examples:
         - name: コラボ
           value: 1
@@ -1332,9 +1359,9 @@ components:
         attributes:
           type: array
           items:
-            $ref: '#/components/schemas/SongAttribute'
+            $ref: "#/components/schemas/SongAttribute"
     SongAttributeValue:
-      type: number
+      type: integer
       enum:
         - 1
         - 2
@@ -1342,6 +1369,7 @@ components:
         - 4
         - 5
       description: 楽曲属性の値
+      format: int32
     SongCreateRequest:
       type: object
       required:
@@ -1353,32 +1381,32 @@ components:
         - arrangers
       properties:
         title:
-          $ref: '#/components/schemas/title'
+          $ref: "#/components/schemas/title"
         description:
-          $ref: '#/components/schemas/description'
+          $ref: "#/components/schemas/description"
         typeValue:
-          $ref: '#/components/schemas/SongTypeValue'
+          $ref: "#/components/schemas/SongTypeValue"
         attributeValue:
-          $ref: '#/components/schemas/SongAttributeValue'
+          $ref: "#/components/schemas/SongAttributeValue"
         lyricists:
           type: array
           items:
-            $ref: '#/components/schemas/RequestLyricist'
+            $ref: "#/components/schemas/RequestLyricist"
         composers:
           type: array
           items:
-            $ref: '#/components/schemas/RequestComposer'
+            $ref: "#/components/schemas/RequestComposer"
         arrangers:
           type: array
           items:
-            $ref: '#/components/schemas/RequestArranger'
+            $ref: "#/components/schemas/RequestArranger"
     SongCreateResponse:
       type: object
       required:
         - song
       properties:
         song:
-          $ref: '#/components/schemas/Song'
+          $ref: "#/components/schemas/Song"
     SongCreator:
       type: object
       required:
@@ -1387,18 +1415,27 @@ components:
         - orderNo
       properties:
         creatorId:
-          $ref: '#/components/schemas/creatorId'
+          $ref: "#/components/schemas/creatorId"
         name:
-          $ref: '#/components/schemas/creatorName'
+          $ref: "#/components/schemas/creatorName"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
     SongGetResponse:
       type: object
       required:
         - song
       properties:
         song:
-          $ref: '#/components/schemas/Song'
+          $ref: "#/components/schemas/Song"
+    SongListResponse:
+      type: object
+      required:
+        - songs
+      properties:
+        songs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Song"
     SongSearchResponse:
       type: object
       required:
@@ -1408,7 +1445,7 @@ components:
         songs:
           type: array
           items:
-            $ref: '#/components/schemas/SongSummary'
+            $ref: "#/components/schemas/Song"
         maxPage:
           type: integer
           format: int32
@@ -1418,34 +1455,6 @@ components:
         - title
         - order_no
       description: 楽曲検索のソート条件
-    SongSummary:
-      type: object
-      required:
-        - songId
-        - title
-        - type
-        - orderNo
-      properties:
-        songId:
-          $ref: '#/components/schemas/songId'
-        title:
-          $ref: '#/components/schemas/title'
-        type:
-          $ref: '#/components/schemas/SongType'
-        attribute:
-          $ref: '#/components/schemas/SongAttribute'
-        orderNo:
-          $ref: '#/components/schemas/orderNo'
-      examples:
-        - songId: 3cd42c09-ff3c-4cd2-913f-a279c4ea89b4
-          title: 描き続けた君へ
-          type:
-            name: オリジナル曲
-            value: 1
-          attribute:
-            name: コラボ
-            value: 1
-          orderNo: 1
     SongType:
       type: object
       required:
@@ -1453,9 +1462,9 @@ components:
         - value
       properties:
         name:
-          $ref: '#/components/schemas/songTypeName'
+          $ref: "#/components/schemas/songTypeName"
         value:
-          $ref: '#/components/schemas/SongTypeValue'
+          $ref: "#/components/schemas/SongTypeValue"
       examples:
         - name: オリジナル曲
           value: 1
@@ -1467,13 +1476,14 @@ components:
         types:
           type: array
           items:
-            $ref: '#/components/schemas/SongType'
+            $ref: "#/components/schemas/SongType"
     SongTypeValue:
-      type: number
+      type: integer
       enum:
         - 1
         - 2
       description: 楽曲種別の値
+      format: int32
     SongUpdateRequest:
       type: object
       required:
@@ -1486,34 +1496,34 @@ components:
         - arrangers
       properties:
         title:
-          $ref: '#/components/schemas/title'
+          $ref: "#/components/schemas/title"
         description:
-          $ref: '#/components/schemas/description'
+          $ref: "#/components/schemas/description"
         typeValue:
-          $ref: '#/components/schemas/SongTypeValue'
+          $ref: "#/components/schemas/SongTypeValue"
         attributeValue:
-          $ref: '#/components/schemas/SongAttributeValue'
+          $ref: "#/components/schemas/SongAttributeValue"
         orderNo:
-          $ref: '#/components/schemas/orderNo'
+          $ref: "#/components/schemas/orderNo"
         lyricists:
           type: array
           items:
-            $ref: '#/components/schemas/RequestLyricist'
+            $ref: "#/components/schemas/RequestLyricist"
         composers:
           type: array
           items:
-            $ref: '#/components/schemas/RequestComposer'
+            $ref: "#/components/schemas/RequestComposer"
         arrangers:
           type: array
           items:
-            $ref: '#/components/schemas/RequestArranger'
+            $ref: "#/components/schemas/RequestArranger"
     SongUpdateResponse:
       type: object
       required:
         - song
       properties:
         song:
-          $ref: '#/components/schemas/Song'
+          $ref: "#/components/schemas/Song"
     SortOrder:
       type: string
       enum:
@@ -1528,7 +1538,7 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/ValidationErrorDetail'
+            $ref: "#/components/schemas/ValidationErrorDetail"
     ValidationErrorDetail:
       type: object
       required:
@@ -1568,6 +1578,7 @@ components:
       description: クリエイター名
     description:
       type: string
+      minLength: 1
       description: 楽曲の説明
     email:
       type: string
@@ -1631,6 +1642,6 @@ servers:
     description: ローカル環境
     variables:
       version:
-        default: ''
+        default: ""
         enum:
           - v1
