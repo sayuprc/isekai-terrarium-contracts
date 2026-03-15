@@ -175,8 +175,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/page'
             default: 1
           explode: false
         - name: per_page
@@ -440,8 +439,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/page'
             default: 1
           explode: false
         - name: per_page
@@ -744,8 +742,7 @@ paths:
           in: query
           required: false
           schema:
-            type: integer
-            format: int32
+            $ref: '#/components/schemas/page'
             default: 1
           explode: false
         - name: per_page
@@ -1584,6 +1581,11 @@ components:
       format: int32
       minimum: 1
       description: 表示順
+    page:
+      type: integer
+      format: int32
+      minimum: 1
+      description: ページ番号
     password:
       type: string
       format: password
