@@ -1,0 +1,8 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: bun run format:check
+
+    test:
+      run: bun test
