@@ -77,6 +77,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoginRequest'
+  /auth/logout:
+    post:
+      operationId: AuthenticateService_logout
+      description: ログアウトAPI
+      parameters: []
+      responses:
+        '204':
+          description: 'There is no content to send for this request, but the headers may be useful. '
+        '401':
+          description: Access is unauthorized.
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - Authenticate
+      security:
+        - BearerAuth: []
   /creators:
     get:
       operationId: CreatorService_listCreators
