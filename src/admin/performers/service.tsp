@@ -25,7 +25,7 @@ interface PerformerService {
     @query name?: string,
     @query sort?: PerformerSearchSortBy = PerformerSearchSortBy.orderNo,
     @query order?: SortOrder = SortOrder.asc,
-    @query page?: int32 = 1,
+    @query page?: page = 1,
     @query("per_page") perPage?: PerPage = PerPage.fifty,
   ): Ok<PerformerSearchResponse> | Unauthorized | Forbidden | ServerError;
 
