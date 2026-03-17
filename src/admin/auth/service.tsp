@@ -11,4 +11,10 @@ interface AuthenticateService {
   @doc("認証API")
   @route("/login")
   login(@body request: LoginRequest): LoginResponse | BadRequest | Unauthorized | Unprocessable | ServerError;
+
+  @doc("ログアウトAPI")
+  @route("/logout")
+  @post
+  @useAuth(BearerAuth)
+  logout(): NoContent | Unauthorized | ServerError;
 }
