@@ -9,6 +9,7 @@ tags:
   - name: Performer
   - name: Song
   - name: SongAttribute
+  - name: SongTag
   - name: SongType
 paths:
   /admin-users:
@@ -629,6 +630,50 @@ paths:
           description: Server error
       tags:
         - SongAttribute
+      security:
+        - BearerAuth: []
+  /song-tags:
+    post:
+      operationId: SongTagService_createSongTag
+      description: 楽曲タグ作成API
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongTagCreateResponse'
+        '400':
+          description: The server could not understand the request due to invalid syntax.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access is unauthorized.
+        '403':
+          description: Access is forbidden.
+        '422':
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+        '503':
+          description: Service unavailable.
+        '504':
+          description: Server error
+      tags:
+        - SongTag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongTagCreateRequest'
       security:
         - BearerAuth: []
   /song-types:
@@ -1448,6 +1493,40 @@ components:
             name: コラボ
             value: 1
           orderNo: 1
+    SongTag:
+      type: object
+      required:
+        - songTagId
+        - name
+        - orderNo
+      properties:
+        songTagId:
+          $ref: '#/components/schemas/songTagId'
+        name:
+          $ref: '#/components/schemas/songTagName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+      examples:
+        - songTagId: 5f95832d-9068-486f-aa33-e2008e0a33dd
+          name: コラボ
+          orderNo: 1
+    SongTagCreateRequest:
+      type: object
+      required:
+        - name
+        - orderNo
+      properties:
+        name:
+          $ref: '#/components/schemas/songTagName'
+        orderNo:
+          $ref: '#/components/schemas/orderNo'
+    SongTagCreateResponse:
+      type: object
+      required:
+        - tag
+      properties:
+        tag:
+          $ref: '#/components/schemas/SongTag'
     SongType:
       type: object
       required:
@@ -1618,6 +1697,14 @@ components:
       type: string
       format: uuid
       description: 楽曲ID
+    songTagId:
+      type: string
+      format: uuid
+      description: 楽曲タグID
+    songTagName:
+      type: string
+      minLength: 1
+      description: 楽曲タグ名
     songTypeName:
       type: string
       minLength: 1

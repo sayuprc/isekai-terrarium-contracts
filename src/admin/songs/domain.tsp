@@ -71,6 +71,20 @@ model SongAttribute {
   value: SongAttributeValue;
 }
 
+@doc("楽曲タグID")
+scalar songTagId extends uuid;
+
+@doc("楽曲タグ名")
+@minLength(1)
+scalar songTagName extends string;
+
+@example(#{ songTagId: "5f95832d-9068-486f-aa33-e2008e0a33dd", name: "コラボ", orderNo: 1 })
+model SongTag {
+  songTagId: songTagId;
+  name: songTagName;
+  orderNo: orderNo;
+}
+
 @example(#{
   songId: "3cd42c09-ff3c-4cd2-913f-a279c4ea89b4",
   title: "描き続けた君へ",
